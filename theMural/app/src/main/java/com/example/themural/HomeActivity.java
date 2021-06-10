@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 //Actividad principal
 public class HomeActivity extends AppCompatActivity {
@@ -17,6 +18,9 @@ public class HomeActivity extends AppCompatActivity {
     private NewItemFragment newItemFragment;
     private ListItemFragment listItemFragment;
     private BottomNavigationView navigator;
+
+    //Firebase
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
         newItemFragment = NewItemFragment.newInstance();
         listItemFragment = ListItemFragment.newInstance();
+        db = FirebaseFirestore.getInstance();
 
         showFragment(newItemFragment);
         navigator.setOnNavigationItemSelectedListener(
