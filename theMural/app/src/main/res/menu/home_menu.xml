@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listItem"
+        android:icon="@drawable/outline_view_list_black_24dp"
+        android:title="List" />
+    <item
+        android:id="@+id/addItem"
+        android:icon="@drawable/outline_add_box_black_24dp"
+        android:title="Post" />
+    <item
+        android:id="@+id/chatItem"
+        android:icon="@drawable/outline_send_black_24dp"
+        android:title="Chat" />
+    <item
+        android:id="@+id/profileItem"
+        android:icon="@drawable/outline_person_black_24dp"
+        android:title="Profile" />
+</menu>
