@@ -19,16 +19,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="407dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/back_post_menu" />
+        android:layout_height="74dp"
+        app:menu="@menu/back_post_menu"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="66dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
