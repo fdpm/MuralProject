@@ -7,41 +7,36 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_sign_up#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_sign_up extends Fragment {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class fragment_sign_up extends Fragment implements View.OnClickListener {
+
+
+    private BottomNavigationView bottomNavigationView2;
+    private EditText nameSignUp;
+    private EditText lastnameSignUp;
+    private EditText pwdSignUp;
+    private EditText editTextTextPassword2;
+    private EditText phoneSignUp;
+    private ImageView imageView2;
+    private Button buttonAddImageSignUp;
+    private Button buttonConfirmSignUp;
 
     public fragment_sign_up() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_sign_up.
-     */
+
     // TODO: Rename and change types and number of parameters
-    public static fragment_sign_up newInstance(String param1, String param2) {
+    public static fragment_sign_up newInstance() {
         fragment_sign_up fragment = new fragment_sign_up();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +45,7 @@ public class fragment_sign_up extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -59,6 +53,26 @@ public class fragment_sign_up extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false);
+        View root = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        bottomNavigationView2 = root.findViewById(R.id.bottomNavigationView2);
+        nameSignUp = root.findViewById(R.id.nameSignUp);
+        lastnameSignUp = root.findViewById(R.id.lastnameSignUp);
+        pwdSignUp = root.findViewById(R.id.pwdSignUp);
+        editTextTextPassword2 = root.findViewById(R.id.editTextTextPassword2);
+        phoneSignUp = root.findViewById(R.id.phoneSignUp);
+        imageView2 = root.findViewById(R.id.imageView2);
+        buttonAddImageSignUp = root.findViewById(R.id.buttonAddImageSignUp);
+        buttonConfirmSignUp = root.findViewById(R.id.buttonConfirmSignUp);
+
+        buttonAddImageSignUp.setOnClickListener(this);
+        buttonConfirmSignUp.setOnClickListener(this);
+
+
+        return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
