@@ -12,11 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class fragment_sign_up extends Fragment implements View.OnClickListener {
 
-
+    private FirebaseFirestore db;
     private BottomNavigationView bottomNavigationView2;
     private EditText nameSignUp;
     private EditText lastnameSignUp;
@@ -41,8 +42,10 @@ public class fragment_sign_up extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
+    //Aqui se pone el firebase
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
 
@@ -73,6 +76,11 @@ public class fragment_sign_up extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonAddImageSignUp:
+
+                break;
+        }
 
     }
 }

@@ -7,29 +7,27 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_post_item#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_post_item extends Fragment {
+import com.google.firebase.firestore.FirebaseFirestore;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class fragment_post_item extends Fragment implements View.OnClickListener {
+
+    private FirebaseFirestore db;
+    private Button buttonBooks;
+    private Button buttonTools;
+    private Button buttonLivingPlace;
+    private Button buttonDevices;
+    private Button buttonMonitoring;
+    private Button buttonVehicles;
 
     public fragment_post_item() {
         // Required empty public constructor
     }
 
 
-    // TODO: Rename and change types and number of parameters
+
     public static fragment_post_item newInstance() {
         fragment_post_item fragment = new fragment_post_item();
         Bundle args = new Bundle();
@@ -41,17 +39,40 @@ public class fragment_post_item extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_post_item, container, false);
+        View root = inflater.inflate(R.layout.fragment_post_item, container, false);
+        buttonBooks = root.findViewById(R.id.buttonBooks);
+        buttonTools = root.findViewById(R.id.buttonTools);
+        buttonLivingPlace = root.findViewById(R.id.buttonLivingPlace);
+        buttonDevices = root.findViewById(R.id.buttonDevices);
+        buttonMonitoring = root.findViewById(R.id.buttonMonitoring);
+        buttonVehicles = root.findViewById(R.id.buttonVehicles);
+
+        buttonBooks.setOnClickListener(this);
+        buttonTools.setOnClickListener(this);
+        buttonLivingPlace.setOnClickListener(this);
+        buttonDevices.setOnClickListener(this);
+        buttonMonitoring.setOnClickListener(this);
+        buttonVehicles.setOnClickListener(this);
+
+        return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonBooks:
+
+                break;
+        }
+
     }
 }

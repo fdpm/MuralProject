@@ -12,7 +12,7 @@
         android:background="#353535">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView3"
+            android:id="@+id/navigationDetailProfile"
             android:layout_width="417dp"
             android:layout_height="71dp"
             android:layout_marginStart="3dp"
@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.739"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView3" />
+            app:layout_constraintTop_toBottomOf="@+id/navigationDetailProfile" />
 
         <ImageView
             android:id="@+id/imageDetailItem"

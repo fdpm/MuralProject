@@ -7,47 +7,68 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class fragment_profile extends Fragment {
+public class fragment_profile extends Fragment implements View.OnClickListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FirebaseFirestore db;
+    private TextView textView3;
+    private Button buttonEditProfile;
+    private Button buttonViewPostsProfile;
+    private Button buttonSupportProfile;
+    private Button buttonLogOut;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public fragment_profile() {
         // Required empty public constructor
     }
 
 
-    // TODO: Rename and change types and number of parameters
+
     public static fragment_profile newInstance() {
         fragment_profile fragment = new fragment_profile();
         Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        textView3 = root.findViewById(R.id.textView3);
+        buttonEditProfile = root.findViewById(R.id.buttonEditProfile);
+        buttonViewPostsProfile = root.findViewById(R.id.buttonViewPostsProfile);
+        buttonSupportProfile = root.findViewById(R.id.buttonSupportProfile);
+        buttonLogOut = root.findViewById(R.id.buttonLogOut);
+
+        buttonEditProfile.setOnClickListener(this);
+        buttonViewPostsProfile.setOnClickListener(this);
+        buttonSupportProfile.setOnClickListener(this);
+        buttonLogOut.setOnClickListener(this);
+
+        return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonEditProfile:
+
+                break;
+        }
     }
 }

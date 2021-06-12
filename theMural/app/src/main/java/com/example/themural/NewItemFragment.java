@@ -42,6 +42,7 @@ public class NewItemFragment extends Fragment implements View.OnClickListener{
         return fragment;
     }
 
+    //Aqui se pone el firebase
     /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
