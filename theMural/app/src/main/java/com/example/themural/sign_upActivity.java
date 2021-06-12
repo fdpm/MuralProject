@@ -2,6 +2,7 @@ package com.example.themural;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,9 +16,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class fragment_sign_up extends Fragment implements View.OnClickListener {
+public class sign_upActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseFirestore db;
+    FirebaseFirestore db;
     private BottomNavigationView bottomNavigationView2;
     private EditText nameSignUp;
     private EditText lastnameSignUp;
@@ -28,9 +29,7 @@ public class fragment_sign_up extends Fragment implements View.OnClickListener {
     private Button buttonAddImageSignUp;
     private Button buttonConfirmSignUp;
 
-    public fragment_sign_up() {
-        // Required empty public constructor
-    }
+    db = FirebaseFirestore.getInstasnce();
 
 
     // TODO: Rename and change types and number of parameters

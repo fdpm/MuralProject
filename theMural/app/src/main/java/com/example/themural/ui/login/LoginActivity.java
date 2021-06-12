@@ -23,9 +23,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.themural.HomeActivity;
 import com.example.themural.R;
 import com.example.themural.data.model.User;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.UUID;
 
@@ -35,7 +39,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText usernameET;
     private EditText passwordET;
     private Button btnLogin;
+    private Button btnRegistro;
     private  ProgressBar loadingProgressBar;
+
+    //private fragment_sign_up sign_up;
+    private HomeActivity home;
     
     //Firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -47,10 +55,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
+        //sign_up = fragment_sign_up.newInstance();
+        home = new HomeActivity();
         usernameET = findViewById(R.id.username);
         passwordET = findViewById(R.id.password);
         btnLogin = findViewById(R.id.btnLogin);
         loadingProgressBar = findViewById(R.id.loading);
+        btnRegistro = findViewById(R.id.btnRegistro);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -120,6 +131,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
 
         btnLogin.setOnClickListener(this);
+        btnRegistro.setOnClickListener(this);
     }
 
 
@@ -139,12 +151,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnLogin:
                 String username = usernameET.getText().toString();
                 String password = passwordET.getText().toString();
-                User user = new User(UUID.randomUUID().toString(), username);
+                User user = new User(UUID.randomUUID().toString(), username, password);
 
                 db.collection("usuarios").document(user.getUserId()).set(user);
-                Log.e(">>>","entro");
+
+
                 //Saber si el usuario ya esta registrado
-                    /*CollectionReference userRef = db.collection("usuarios");
+                    CollectionReference userRef = db.collection("usuarios");
                     Query query = userRef.whereEqualTo("username",username);
                     query.get().addOnCompleteListener(
                         task -> {
@@ -155,9 +168,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             }
                         }
-                );*/
+                );
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());
+                break;
+            case R.id.btnRegistro:
+                //home.showFragment(sign_up);
+                break;
+
+
         }
     }
 

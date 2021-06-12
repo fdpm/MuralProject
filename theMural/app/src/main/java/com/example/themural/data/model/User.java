@@ -27,6 +27,12 @@ public class User {
         this.displayName = displayName;
     }
 
+    public User(String userId, String displayName,String password){
+        this.userId = userId;
+        this.displayName = displayName;
+        this.password = password;
+    }
+
     public User(String name, String password, String phone, Image picture) {
         this.name = name;
         this.password = password;
