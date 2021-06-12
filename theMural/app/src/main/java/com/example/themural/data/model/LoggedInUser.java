@@ -1,11 +1,15 @@
 package com.example.themural.data.model;
 
 import android.media.Image;
+import java.util.UUID;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
 public class LoggedInUser {
+
+    public final static String SELLER ="seller";
+    public final static String PURCHASER ="purchaser";
 
     private static Main main;
     private Chat chat;
@@ -23,15 +27,14 @@ public class LoggedInUser {
         this.displayName = displayName;
     }
 
-    public LoggedInUser(Chat chat, String userId, String displayName, String name, String password, String phone, Image picture, String type) {
-        this.chat = chat;
-        this.userId = userId;
-        this.displayName = displayName;
+    public LoggedInUser(String name, String password, String phone, Image picture) {
         this.name = name;
         this.password = password;
         this.phone = phone;
         this.picture = picture;
-        this.type = type;
+        type = PURCHASER;
+        userId = UUID.randomUUID().toString();
+
     }
 
     public Chat getChat() {

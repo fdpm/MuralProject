@@ -2,6 +2,8 @@ package com.example.themural.data.model;
 
 import android.media.Image;
 
+import java.util.UUID;
+
 public class Item {
 
     private String idItem;
@@ -10,12 +12,10 @@ public class Item {
     private String locationItem;
     private String typeItem;
     private double priceItem;
-    private boolean stateItem;
+    private String stateItem;
     private Image imageItem;
 
-    public Item(String idItem, String nameItem, String descriptionItem,
-                String locationItem, String typeItem, double priceItem, boolean stateItem, Image imageItem) {
-        this.idItem = idItem;
+    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem) {
         this.nameItem = nameItem;
         this.descriptionItem = descriptionItem;
         this.locationItem = locationItem;
@@ -23,6 +23,7 @@ public class Item {
         this.priceItem = priceItem;
         this.stateItem = stateItem;
         this.imageItem = imageItem;
+        idItem = UUID.randomUUID().toString();
     }
 
     public String getIdItem() {
@@ -73,11 +74,11 @@ public class Item {
         this.priceItem = priceItem;
     }
 
-    public boolean isStateItem() {
+    public String isStateItem() {
         return stateItem;
     }
 
-    public void setStateItem(boolean stateItem) {
+    public void setStateItem(String stateItem) {
         this.stateItem = stateItem;
     }
 
