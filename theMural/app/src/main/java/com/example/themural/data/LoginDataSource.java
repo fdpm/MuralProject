@@ -13,6 +13,9 @@ public class LoginDataSource {
 
         try {
             // TODO: handle loggedInUser authentication
+            User user = new User(username, password);
+
+
             User fakeUser =
                     new User(
                             java.util.UUID.randomUUID().toString(),

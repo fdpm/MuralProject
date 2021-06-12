@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -23,12 +24,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.themural.R;
-import com.example.themural.ui.login.LoginViewModel;
-import com.example.themural.ui.login.LoginViewModelFactory;
+import com.example.themural.data.model.User;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.UUID;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LoginViewModel loginViewModel;
+    private EditText usernameET;
+    private EditText passwordET;
+    private Button btnLogin;
+    private  ProgressBar loadingProgressBar;
+    
+    //Firebase
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,10 +47,10 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        usernameET = findViewById(R.id.username);
+        passwordET = findViewById(R.id.password);
+        btnLogin = findViewById(R.id.btnLogin);
+        loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -48,12 +58,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (loginFormState == null) {
                     return;
                 }
-                loginButton.setEnabled(loginFormState.isDataValid());
+                btnLogin.setEnabled(loginFormState.isDataValid());
                 if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
+                    usernameET.setError(getString(loginFormState.getUsernameError()));
                 }
                 if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
+                    passwordET.setError(getString(loginFormState.getPasswordError()));
                 }
             }
         });
@@ -91,33 +101,27 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                loginViewModel.loginDataChanged(usernameET.getText().toString(),
+                        passwordET.getText().toString());
             }
         };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        usernameET.addTextChangedListener(afterTextChangedListener);
+        passwordET.addTextChangedListener(afterTextChangedListener);
+        passwordET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
+                    loginViewModel.login(usernameET.getText().toString(),
+                            passwordET.getText().toString());
                 }
                 return false;
             }
         });
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-            }
-        });
+        btnLogin.setOnClickListener(this);
     }
+
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
@@ -128,4 +132,33 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnLogin:
+                String username = usernameET.getText().toString();
+                String password = passwordET.getText().toString();
+                User user = new User(UUID.randomUUID().toString(), username);
+
+                db.collection("usuarios").document(user.getUserId()).set(user);
+                Log.e(">>>","entro");
+                //Saber si el usuario ya esta registrado
+                    /*CollectionReference userRef = db.collection("usuarios");
+                    Query query = userRef.whereEqualTo("username",username);
+                    query.get().addOnCompleteListener(
+                        task -> {
+                            if(task.isSuccessful()){
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    Toast.makeText(this, "El usuario ya se encuentra registrado", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        }
+                );*/
+                loadingProgressBar.setVisibility(View.VISIBLE);
+                loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());
+        }
+    }
+
 }

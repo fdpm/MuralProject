@@ -6,8 +6,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.themural.data.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -22,15 +27,19 @@ public class HomeActivity extends AppCompatActivity {
     private fragment_chat_purchase chatPurchase;
     private fragment_profile profile;
 
+
+
     private BottomNavigationView navigator;
 
     //Firebase
-    private FirebaseFirestore db;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
 
         navigator = findViewById(R.id.navigator);
 
@@ -41,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
         chatPurchase = fragment_chat_purchase.newInstance();
         profile = fragment_profile.newInstance();
 
-        db = FirebaseFirestore.getInstance();
 
         showFragment(newItemFragment);
         navigator.setOnNavigationItemSelectedListener(
@@ -74,4 +82,7 @@ public class HomeActivity extends AppCompatActivity {
         transaction.commit();
 
     }
+
+
+
 }
