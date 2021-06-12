@@ -30,5 +30,11 @@ public class Main {
         }
     }
 
+    public ArrayList<LoggedInUser> getUsers() {
+        return users;
+    }
 
+    public ArrayList<Item> getPosts() {
+        return posts;
+    }
 }
