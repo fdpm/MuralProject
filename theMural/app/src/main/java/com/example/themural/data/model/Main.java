@@ -45,10 +45,10 @@ public class Main {
         return null;
     }
 
-    public void newPost(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem){
+    public void newPost(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem,User user){
 
-        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null && stateItem!=null && imageItem!=null) {
-            Item newPost = new Item(nameItem, descriptionItem, locationItem, typeItem, priceItem, stateItem, imageItem);
+        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null && stateItem!=null && imageItem!=null && user!=null) {
+            Item newPost = new Item(nameItem, descriptionItem, locationItem, typeItem, priceItem, stateItem, imageItem, user);
             posts.add(newPost);
         }
     }

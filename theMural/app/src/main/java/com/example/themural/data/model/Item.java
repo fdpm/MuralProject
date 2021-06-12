@@ -1,10 +1,11 @@
 package com.example.themural.data.model;
 
 import android.media.Image;
-
 import java.util.UUID;
 
 public class Item {
+
+    private User user;
 
     private String idItem;
     private String nameItem;
@@ -15,7 +16,7 @@ public class Item {
     private String stateItem;
     private Image imageItem;
 
-    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem) {
+    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem, User users) {
         this.nameItem = nameItem;
         this.descriptionItem = descriptionItem;
         this.locationItem = locationItem;
@@ -23,6 +24,7 @@ public class Item {
         this.priceItem = priceItem;
         this.stateItem = stateItem;
         this.imageItem = imageItem;
+        this.user = user;
         idItem = UUID.randomUUID().toString();
     }
 
@@ -88,5 +90,9 @@ public class Item {
 
     public void setImageItem(Image imageItem) {
         this.imageItem = imageItem;
+    }
+
+    public User getUser() {
+        return user;
     }
 }
