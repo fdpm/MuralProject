@@ -15,15 +15,18 @@
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView5">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView5"
         android:layout_width="407dp"
         android:layout_height="74dp"
-        app:menu="@menu/back_post_menu"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/back_post_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

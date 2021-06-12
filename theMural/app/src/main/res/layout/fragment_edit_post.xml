@@ -10,13 +10,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#353535"
+        android:backgroundTint="#353535">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="410dp"
             android:layout_height="57dp"
-            android:layout_marginTop="57dp"
             android:layout_marginEnd="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,12 +46,14 @@
 
         <Button
             android:id="@+id/buttonContinueDetail2"
-            android:layout_width="155dp"
-            android:layout_height="48dp"
+            android:layout_width="253dp"
+            android:layout_height="45dp"
             android:layout_marginStart="114dp"
             android:layout_marginEnd="142dp"
             android:layout_marginBottom="96dp"
+            android:backgroundTint="#7758D1"
             android:text="Continuar"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -62,7 +65,10 @@
             android:layout_marginStart="46dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="51dp"
+            android:background="#404040"
             android:text="Descripcion"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleItem2" />
@@ -74,9 +80,12 @@
             android:layout_marginStart="89dp"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="112dp"
+            android:backgroundTint="#C6587E"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Precio"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxUsed2" />
@@ -88,7 +97,9 @@
             android:layout_marginStart="17dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="186dp"
+            android:buttonTint="#FFFFFF"
             android:text="Usado"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/checkBoxNone2"
             app:layout_constraintTop_toBottomOf="@+id/locationItem2" />
@@ -101,6 +112,7 @@
             android:layout_marginTop="17dp"
             android:layout_marginEnd="322dp"
             android:text="Estado"
+            android:textColor="#C6587E"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationItem2" />
@@ -111,7 +123,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="46dp"
             android:layout_marginEnd="16dp"
+            android:buttonTint="#FFFFFF"
             android:text="No aplica"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/checkBoxUsed2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stateItem2" />
@@ -123,9 +137,11 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="71dp"
             android:layout_marginEnd="101dp"
+            android:backgroundTint="#C6587E"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Titulo"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
@@ -137,7 +153,10 @@
             android:layout_marginStart="46dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="51dp"
+            android:background="#404040"
             android:text="Ubicacion"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionItem2" />

@@ -8,26 +8,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#353535">
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="126dp"
-            android:layout_marginTop="114dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="126dp"
             android:text="Detalles de la publicacion"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView4" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="173dp"
-            android:layout_height="153dp"
+            android:layout_width="279dp"
+            android:layout_height="174dp"
             android:layout_marginStart="119dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="119dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +44,9 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="101dp"
+            android:backgroundTint="#7758D1"
             android:text="Editar foto de perfil"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -53,9 +58,11 @@
             android:layout_marginStart="98dp"
             android:layout_marginTop="22dp"
             android:layout_marginEnd="103dp"
+            android:backgroundTint="#C6587E"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonEditProfileImage" />
@@ -67,9 +74,11 @@
             android:layout_marginStart="99dp"
             android:layout_marginTop="19dp"
             android:layout_marginEnd="102dp"
+            android:backgroundTint="#C6587E"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
@@ -81,30 +90,34 @@
             android:layout_marginStart="99dp"
             android:layout_marginTop="11dp"
             android:layout_marginEnd="102dp"
+            android:backgroundTint="#C6587E"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
         <Button
             android:id="@+id/buttonConfirmEditProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="251dp"
+            android:layout_height="47dp"
             android:layout_marginStart="144dp"
             android:layout_marginTop="43dp"
             android:layout_marginEnd="145dp"
+            android:backgroundTint="#7758D1"
             android:text="Confirmar"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView4"
             android:layout_width="412dp"
             android:layout_height="58dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

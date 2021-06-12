@@ -5,7 +5,7 @@
     android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#213493"
+    android:background="#353535"
     tools:context=".HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +31,7 @@
         android:id="@+id/bottomNavUpper"
         android:layout_width="411dp"
         android:layout_height="72dp"
+        android:background="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,6 +41,7 @@
         android:id="@+id/bottomNavUp"
         android:layout_width="0dp"
         android:layout_height="63dp"
+        android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomNavUpper"
