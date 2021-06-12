@@ -6,7 +6,7 @@ import java.util.UUID;
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
-public class LoggedInUser {
+public class User {
 
     public final static String SELLER ="seller";
     public final static String PURCHASER ="purchaser";
@@ -22,12 +22,12 @@ public class LoggedInUser {
     private Image picture;
     private String type;
 
-    public LoggedInUser(String userId, String displayName) {
+    public User(String userId, String displayName) {
         this.userId = userId;
         this.displayName = displayName;
     }
 
-    public LoggedInUser(String name, String password, String phone, Image picture) {
+    public User(String name, String password, String phone, Image picture) {
         this.name = name;
         this.password = password;
         this.phone = phone;
