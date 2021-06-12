@@ -16,7 +16,7 @@ public class Item {
     private String stateItem;
     private Image imageItem;
 
-    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem, User users) {
+    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem, User user) {
         this.nameItem = nameItem;
         this.descriptionItem = descriptionItem;
         this.locationItem = locationItem;
