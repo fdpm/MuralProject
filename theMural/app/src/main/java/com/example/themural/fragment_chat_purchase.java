@@ -8,12 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_post_item#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_post_item extends Fragment {
+
+public class fragment_chat_purchase extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,17 +20,16 @@ public class fragment_post_item extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public fragment_post_item() {
+    public fragment_chat_purchase() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static fragment_post_item newInstance() {
-        fragment_post_item fragment = new fragment_post_item();
+    public static fragment_chat_purchase newInstance() {
+        fragment_chat_purchase fragment = new fragment_chat_purchase();
         Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,6 +47,6 @@ public class fragment_post_item extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_post_item, container, false);
+        return inflater.inflate(R.layout.fragment_chat_purchase, container, false);
     }
 }

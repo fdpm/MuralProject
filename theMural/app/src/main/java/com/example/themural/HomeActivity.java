@@ -17,6 +17,11 @@ public class HomeActivity extends AppCompatActivity {
     //Donde hosteamos las actividades a llamar
     private NewItemFragment newItemFragment;
     private ListItemFragment listItemFragment;
+    private fragment_post_item postItem;
+    private fragment_chat_sell chatSell;
+    private fragment_chat_purchase chatPurchase;
+    private fragment_profile profile;
+
     private BottomNavigationView navigator;
 
     //Firebase
@@ -31,6 +36,11 @@ public class HomeActivity extends AppCompatActivity {
 
         newItemFragment = NewItemFragment.newInstance();
         listItemFragment = ListItemFragment.newInstance();
+        postItem = fragment_post_item.newInstance();
+        chatSell = fragment_chat_sell.newInstance();
+        chatPurchase = fragment_chat_purchase.newInstance();
+        profile = fragment_profile.newInstance();
+
         db = FirebaseFirestore.getInstance();
 
         showFragment(newItemFragment);
@@ -39,16 +49,16 @@ public class HomeActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()){
                         case R.id.listItem:
                             //Aqui se especifica el fragmento a mostrar
-                            showFragment(newItemFragment);
-                            break;
-                        case R.id.addItem:
                             showFragment(listItemFragment);
                             break;
+                        case R.id.addItem:
+                            showFragment(postItem);
+                            break;
                         case R.id.chatItem:
-                            //showFragment();
+                            showFragment(chatSell);
                             break;
                         case R.id.profileItem:
-                            //showFragment();
+                            showFragment(profile);
                             break;
                     }
                     return true;
