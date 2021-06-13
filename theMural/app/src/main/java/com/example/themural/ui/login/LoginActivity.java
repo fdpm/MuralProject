@@ -166,13 +166,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Intent login = new Intent(this, LoginActivity.class);
                                 startActivity(login);
                                 Toast.makeText(this, "Usuario o contraseña invalidos por favor intente de nuevo", Toast.LENGTH_LONG).show();
-                                Log.e(">>>>>>", "El usuario no existe");
+                                Log.e(">>>>>>>>>>","NO Entro: El usuario es :"+username+" la contraseña es: "+password);
 
                             }else{
                                 Intent home = new Intent(this, HomeActivity.class);
-                                home.putExtra("key1","nikeName");
+                                home.putExtra("key1","nickName");
                                 home.putExtra("key2",username);
-                                Log.e(">>>>>>>>>>","El usuario es :"+username);
+                                Log.e(">>>>>>>>>>","Entro: El usuario es :"+username+" la contraseña es: "+password);
                                 startActivity(home);
 
                             }

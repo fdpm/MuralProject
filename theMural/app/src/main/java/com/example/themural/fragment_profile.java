@@ -1,8 +1,10 @@
 package com.example.themural;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +69,14 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonEditProfile:
+                // Crea el nuevo fragmento y la transacción.
+                Fragment nuevoFragmento = new fragment_edit_profile();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainer, nuevoFragmento);
+                transaction.addToBackStack(null);
 
+                // Commit a la transacción
+                transaction.commit();
                 break;
         }
     }
