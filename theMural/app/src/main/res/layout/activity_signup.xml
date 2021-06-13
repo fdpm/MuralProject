@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView2" />
 
         <EditText
-            android:id="@+id/lastnameSignUp"
+            android:id="@+id/nicknameET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="90dp"
@@ -48,7 +48,7 @@
             android:backgroundTint="#C6587E"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Apellido"
+            android:text="nickName"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastnameSignUp" />
+            app:layout_constraintTop_toBottomOf="@+id/nicknameET" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"

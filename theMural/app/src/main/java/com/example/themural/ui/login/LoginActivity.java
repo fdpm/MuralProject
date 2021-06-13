@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 User user = new User(UUID.randomUUID().toString(), username, password);
 
                 db.collection("usuarios")
-                        .whereEqualTo("name",username)
+                        .whereEqualTo("nickName",username)
                         .whereEqualTo("password",password)
                         .get().addOnSuccessListener(
 
@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             }else{
                                 Intent home = new Intent(this, HomeActivity.class);
-                                home.putExtra("key1","username");
+                                home.putExtra("key1","nikeName");
                                 home.putExtra("key2",username);
                                 Log.e(">>>>>>>>>>","El usuario es :"+username);
                                 startActivity(home);

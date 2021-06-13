@@ -13,7 +13,7 @@ public class User {
 
     private static Main main;
     private Chat chat;
-
+    private String nickName;
     private String userId;
     private String displayName;
     private String name;
@@ -29,18 +29,28 @@ public class User {
 
     public User(String userId, String displayName,String password){
         this.userId = userId;
+
         this.displayName = displayName;
         this.password = password;
     }
 
-    public User(String name, String password, String phone, Image picture) {
+    public User(String name, String nickName, String password, String phone, Image picture) {
         this.name = name;
+        this.nickName = nickName;
         this.password = password;
         this.phone = phone;
         this.picture = picture;
         type = PURCHASER;
         userId = UUID.randomUUID().toString();
 
+    }
+
+    public String getNickName(){
+        return nickName;
+    }
+
+    public void setNickName(String nickName){
+        this.nickName = nickName;
     }
 
     public Chat getChat() {

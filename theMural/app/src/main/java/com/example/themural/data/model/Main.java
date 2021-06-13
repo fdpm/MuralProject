@@ -13,10 +13,10 @@ public class Main {
         posts = new ArrayList<Item>();
     }
 
-    public void newUser(String name, String password, String phone, Image picture){
+    public void newUser(String name, String nickname,String password, String phone, Image picture){
 
         if(name!= null && password!= null && phone!=null && picture!=null) {
-            User newUser = new User(name, password, phone, picture);
+            User newUser = new User(name, nickname,password, phone, picture);
             users.add(newUser);
         }
     }

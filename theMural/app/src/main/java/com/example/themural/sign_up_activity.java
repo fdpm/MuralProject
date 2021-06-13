@@ -2,15 +2,11 @@ package com.example.themural;
 
 import android.content.Intent;
 import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,7 +22,7 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
 
     private BottomNavigationView bottomNavigationView2;
     private EditText nameSignUp;
-    private EditText lastnameSignUp;
+    private EditText nickname;
     private EditText pwdSignUp;
     private EditText editTextTextPassword2;
     private EditText phoneSignUp;
@@ -45,7 +41,7 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
 
         bottomNavigationView2 = findViewById(R.id.bottomNavigationView2);
         nameSignUp = findViewById(R.id.nameSignUp);
-        lastnameSignUp = findViewById(R.id.lastnameSignUp);
+        nickname = findViewById(R.id.nicknameET);
         pwdSignUp = findViewById(R.id.pwdSignUp);
         editTextTextPassword2 = findViewById(R.id.editTextTextPassword2);
         phoneSignUp = findViewById(R.id.phoneSignUp);
@@ -68,13 +64,13 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
 
             case R.id.buttonConfirmSignUp:
                 String nombre = nameSignUp.getText().toString();
-                String apellido = lastnameSignUp.getText().toString();
+                String nicknam = nickname.getText().toString();
                 String contraeña = pwdSignUp.getText().toString();
                 String telefono = phoneSignUp.getText().toString();
                 Image imagen = null;
 
-                String nombreCompleto = nombre+" "+apellido;
-                User user = new User(nombreCompleto,contraeña,telefono,imagen);
+
+                User user = new User(nombre,nicknam,contraeña,telefono,imagen);
                 user.setDisplayName(nombre);
                 db.collection("usuarios").document(user.getUserId()).set(user);
 
