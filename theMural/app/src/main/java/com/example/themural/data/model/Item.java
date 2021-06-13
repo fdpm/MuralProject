@@ -13,10 +13,14 @@ public class Item {
     private String locationItem;
     private String typeItem;
     private double priceItem;
-    private String stateItem;
+    private int stateItem;
     private Image imageItem;
 
-    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem, User user) {
+    public Item(){
+
+    }
+
+    public Item(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, int stateItem, Image imageItem, User user) {
         this.nameItem = nameItem;
         this.descriptionItem = descriptionItem;
         this.locationItem = locationItem;
@@ -76,11 +80,11 @@ public class Item {
         this.priceItem = priceItem;
     }
 
-    public String isStateItem() {
+    public int isStateItem() {
         return stateItem;
     }
 
-    public void setStateItem(String stateItem) {
+    public void setStateItem(int stateItem) {
         this.stateItem = stateItem;
     }
 

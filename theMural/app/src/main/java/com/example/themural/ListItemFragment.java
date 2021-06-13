@@ -53,7 +53,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener{
         recyclerListItems = root.findViewById(R.id.recyclerViewMyPost);
         BottomNavigationView filterOrderNav = root.findViewById(R.id.filterOrderNav);
         BottomNavigationView searchNav = root.findViewById(R.id.searchNav);
-        recyclerListItems.setHasFixedSize(true);
+//        recyclerListItems.setHasFixedSize(true);
 
         return root;
     }

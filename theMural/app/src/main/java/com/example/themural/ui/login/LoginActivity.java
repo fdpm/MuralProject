@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btnRegistro;
     private  ProgressBar loadingProgressBar;
 
-    @SerializedName("userdb")
+    private Main main;
     private User userdb;
 
     //private fragment_sign_up sign_up;
@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
+        main = new Main();
         signUp = new sign_up_activity();
         home = new HomeActivity();
         usernameET = findViewById(R.id.username);
@@ -170,10 +171,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     if (task.isSuccessful()) {
                                         if(task.getResult().size() > 0){
                                             for(QueryDocumentSnapshot document: task.getResult()){
-                                               userdb = document.toObject(User.class);
-                                                Main main = new Main();
-                                               main.newUser(userdb);
-                                               Log.e(">>>",main.getUsers().get(0).getName());
+                                                userdb = document.toObject(User.class);
+                                                main.newUser(userdb);
                                                 Intent home = new Intent(this, HomeActivity.class);
                                                 startActivity(home);
                                                 break;

@@ -51,17 +51,17 @@ public class Main {
         return null;
     }
 
-    public void newPost(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem,User user){
+    public void newPost(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, int stateItem, Image imageItem,User user){
 
-        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null && stateItem!=null && imageItem!=null && user!=null) {
+        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null && imageItem!=null && user!=null) {
             Item newPost = new Item(nameItem, descriptionItem, locationItem, typeItem, priceItem, stateItem, imageItem, user);
             posts.add(newPost);
         }
     }
 
-    public void editPost(String id, String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, String stateItem, Image imageItem){
+    public void editPost(String id, String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, int stateItem, Image imageItem){
 
-        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null && stateItem!=null && imageItem!=null) {
+        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null  && imageItem!=null) {
             Item editedPost = findPost(id);
             editedPost.setNameItem(nameItem);
             editedPost.setDescriptionItem(descriptionItem);

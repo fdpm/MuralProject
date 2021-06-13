@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.themural.data.model.Item;
+import com.example.themural.data.model.Main;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -33,6 +36,8 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     private Button buttonContinueDetail;
     private Spinner spinnertype;
 
+    public Item item;
+    public Main main;
 
 
     public fragment_post_details() {
@@ -53,7 +58,8 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState) {
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-
+        item = new Item();
+        main = new Main();
     }
 
     @Override
@@ -77,7 +83,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, opciones);
         spinnertype.setAdapter(adapter);
 
-        spinnertype.getSelectedItem().toString();
+
         buttonContinueDetail.setOnClickListener(this);
 
 
@@ -93,8 +99,27 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonContinueDetail:
-
+                Log.e(">>>",main.getUsers().get(0).getName());
+                    tomarDatos();
+                db.collection("publicaciones").document(item.getIdItem()).set(item);
                 break;
+        }
+
+    }
+
+    public void tomarDatos(){
+
+        item.setTypeItem(spinnertype.getSelectedItem().toString());
+        item.setDescriptionItem(descriptionItem.getText().toString());
+        item.setIdItem(main.getUsers().get(0).getUserId());
+        item.setLocationItem(locationItem.getText().toString());
+        item.setPriceItem(Integer.parseInt(priceItem.getText().toString()));
+        if(checkBoxUsed.isChecked()){
+            item.setStateItem(0);
+        }else if(checkBoxNew.isChecked()){
+            item.setStateItem(1);
+        }else if(checkBoxNone.isChecked()){
+            item.setStateItem(2);
         }
 
     }
