@@ -27,24 +27,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/home_menu" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavUpper"
-        android:layout_width="411dp"
-        android:layout_height="72dp"
-        android:background="#F4F4F4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/upper_menu" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavUp"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavUpper"
-        app:menu="@menu/up_menu" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

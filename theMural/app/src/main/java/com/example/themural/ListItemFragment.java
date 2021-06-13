@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
@@ -21,6 +22,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener{
     //state
     private FirebaseFirestore db;
     private RecyclerView recyclerListItems;
+    private BottomNavigationView filterOrderNav;
+    private BottomNavigationView searchNav;
 
 
     public ListItemFragment() {
@@ -50,6 +53,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_list_item, container, false);
         recyclerListItems = root.findViewById(R.id.recyclerViewMyPost);
+        filterOrderNav = root.findViewById(R.id.filterOrderNav);
+        searchNav = root.findViewById(R.id.searchNav);
         recyclerListItems.setHasFixedSize(true);
 
         return root;
