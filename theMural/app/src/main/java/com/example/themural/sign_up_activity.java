@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.themural.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -37,7 +38,7 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up_activity);
+        setContentView(R.layout.activity_signup);
 
 
         bottomNavigationView2 = findViewById(R.id.bottomNavigationView2);
@@ -59,8 +60,15 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.bottomNavigationView2:
+                Intent anterior = new Intent(this, LoginActivity.class);
+                startActivity(anterior);
 
-
+            case R.id.buttonConfirmSignUp:
+                Intent login = new Intent(this, LoginActivity.class);
+                startActivity(login);
         }
     }
+
+
 }

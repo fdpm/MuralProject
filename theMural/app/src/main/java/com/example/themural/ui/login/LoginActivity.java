@@ -176,17 +176,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());
                 break;
             case R.id.btnRegistro:
-
-                this.GoToLoginActivity();
-
+                Intent siguiente = new Intent(this, sign_up_activity.class);
+                startActivity(siguiente);
                 break;
 
 
         }
     }
 
-    private void GoToLoginActivity(){
-        Intent intent = new Intent(this, sign_up_activity.class);
-        startActivity(intent);
-    }
+
+
+
 }
