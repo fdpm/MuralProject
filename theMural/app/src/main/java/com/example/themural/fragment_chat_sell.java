@@ -72,7 +72,6 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //chatSellList.setLayoutManager(layoutManager);
 
-
         return inflater.inflate(R.layout.fragment_chat_sell, container, false);
     }
 
