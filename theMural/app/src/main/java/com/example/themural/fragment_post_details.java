@@ -23,6 +23,7 @@ import com.example.themural.ui.login.LoginActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class fragment_post_details extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -112,9 +113,11 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     }
 
     public void tomarDatos(){
+        Random r = new Random();
+        int valor = r.nextInt(Integer.MAX_VALUE);
         item.setTypeItem(spinnertype.getSelectedItem().toString());
         item.setDescriptionItem(descriptionItem.getText().toString());
-        item.setIdItem(main.getUsers().get(0).getUserId());
+        item.setIdItem(main.getUsers().get(0).getUserId()+"."+valor);
         item.setLocationItem(locationItem.getText().toString());
         item.setPriceItem(Integer.parseInt(priceItem.getText().toString()));
         if(checkBoxUsed.isChecked()){
