@@ -1,8 +1,18 @@
 package com.example.themural;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -14,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,6 +39,9 @@ import java.util.Random;
 
 public class fragment_post_details extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    public static final int GALLERY_CALLBACK = 13;
+    public static final int GALLERY_CALLBACK2 = 14;
+
     private FirebaseFirestore db;
     private EditText titleItem;
     private EditText descriptionItem;
@@ -38,6 +52,13 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     private EditText priceItem;
     private Button buttonContinueDetail;
     private Spinner spinnertype;
+
+
+
+
+    private ImageView imageViewItem;
+    private Button buttonPostImageItem;
+    private Button buttonPostItem;
 
     private Item item;
     private Main main;
@@ -63,6 +84,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         item = new Item();
         main = LoginActivity.getMain();
 
+        //ActivityCompat.requestPermissions(this, new String[]{},11);
 
     }
 
@@ -72,6 +94,8 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         // Inflate the layout for this fragment
 
         View root = inflater.inflate(R.layout.fragment_post_details_item, container, false);
+        ViewGroup root2 = (ViewGroup) inflater.inflate(R.layout.fragment_image_detail, container, false);
+
         titleItem = root.findViewById(R.id.titleItem);
         descriptionItem = root.findViewById(R.id.descriptionItem);
         locationItem = root.findViewById(R.id.locationItem);
@@ -80,6 +104,12 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         checkBoxNone = root.findViewById(R.id.checkBoxNone);
         priceItem = root.findViewById(R.id.priceItem);
         buttonContinueDetail = root.findViewById(R.id.buttonContinueDetail);
+
+        //root2
+        imageViewItem = root2.findViewById(R.id.imageViewItem);
+        buttonPostImageItem = root2.findViewById(R.id.buttonPostImageItem);
+        buttonPostItem = root2.findViewById(R.id.buttonPostItem);
+
 
         spinnertype = root.findViewById(R.id.spinnerType);
 
@@ -106,6 +136,24 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
             case R.id.buttonContinueDetail:
                 tomarDatos();
                 db.collection("publicaciones").document(item.getIdItem()).set(item);
+                
+                break;
+
+            case R.id.buttonPostImageItem:
+                /*
+                ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+                        new ActivityResultContracts.StartActivityForResult(),
+                        result -> {
+                            if (result.getResultCode() == Activity.RESULT_OK) {
+                                // There are no request codes
+                                Intent data = result.getData();
+                                doSomeOperations();
+                            }
+                        });
+                Intent j = new Intent(Intent.ACTION_GET_CONTENT);
+                j.setType("image/*");
+                startActivityForResult(j, GALLERY_CALLBACK2);
+                */
                 break;
         }
 
@@ -128,6 +176,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         }
         main.newPost(item);
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

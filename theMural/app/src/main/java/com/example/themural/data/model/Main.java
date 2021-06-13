@@ -1,9 +1,20 @@
 package com.example.themural.data.model;
 
 import android.media.Image;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.themural.R;
+import com.example.themural.adapter.ItemView;
+
 import java.util.ArrayList;
 
-public class Main {
+public class Main extends RecyclerView.Adapter<ItemView> {
 
     private ArrayList<User> users;
     private ArrayList<Item> posts;
@@ -12,6 +23,8 @@ public class Main {
         users = new ArrayList<User>();
         posts = new ArrayList<Item>();
     }
+
+
 
     public void newUser(String name, String nickname,String password, String phone, Image picture){
 
@@ -30,6 +43,7 @@ public class Main {
     public void newPost(Item post){
         if (post != null) {
             posts.add(post);
+            this.notifyDataSetChanged();
         }
     }
 
@@ -100,4 +114,31 @@ public class Main {
     public ArrayList<Item> getPosts() {
         return posts;
     }
+
+
+    @NonNull
+    @Override
+    //Metodo que se ejecuta por cada item en el arreglo
+    public ItemView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View row = inflater.inflate(R.layout.itemrow, null);
+        ConstraintLayout rowroot = (ConstraintLayout) row;
+        ItemView itemView = new ItemView(rowroot);
+        return itemView;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ItemView holder, int position) {
+        holder.getTitleItem().setText(posts.get(position).getNameItem());
+        holder.getTitleItem().setText(posts.get(position).getDescriptionItem());
+        holder.getTitleItem().setText(posts.get(position).getLocationItem());
+        holder.getTitleItem().setText((int) posts.get(position).getPriceItem());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return posts.size();
+    }
+
 }

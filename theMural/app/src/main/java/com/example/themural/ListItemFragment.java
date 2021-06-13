@@ -11,7 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< Updated upstream
 import com.example.themural.data.model.Item;
+=======
+import com.example.themural.data.model.Main;
+>>>>>>> Stashed changes
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,8 +32,16 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
     //state
     private FirebaseFirestore db;
     private RecyclerView recyclerListItems;
+<<<<<<< Updated upstream
     private Item item;
     private ArrayList<Item>  posts;
+=======
+    private LinearLayoutManager  layoutManager;
+
+    //El adaptador es el main
+    private Main adapter;
+
+>>>>>>> Stashed changes
 
     public ListItemFragment() {
         // Required empty public constructor
@@ -52,6 +64,14 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         item = new Item();
         posts = new ArrayList<>();
+
+
+        recyclerListItems.findViewById(R.id.recyclerListItems);
+        layoutManager = new LinearLayoutManager(this.getContext());
+        recyclerListItems.setLayoutManager(layoutManager);
+
+            adapter = new Main();
+            recyclerListItems.setAdapter(adapter);
 
     }
 
@@ -76,6 +96,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
 
     }
 
+<<<<<<< Updated upstream
     public void mostrarPost() {
         db.collection("publicaciones").get().addOnCompleteListener(
                 task -> {
@@ -90,6 +111,10 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                         }
                     }
                 });
+=======
+    public void mostrarPost(){
+        db.collection("publicaciones").document();
+>>>>>>> Stashed changes
     }
 
 }
