@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.themural.data.model.Main;
+import com.example.themural.ui.login.LoginActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -24,6 +26,7 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
     private Button buttonSupportProfile;
     private Button buttonLogOut;
 
+    private static Main main;
 
     public fragment_profile() {
         // Required empty public constructor
@@ -43,7 +46,7 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-
+        main = LoginActivity.getMain();
     }
 
     @Override
@@ -87,6 +90,21 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
 
                 // Commit a la transacción
                 transactionEdit.commit();
+                break;
+            case R.id.buttonSupportProfile:
+                // Crea el nuevo fragmento y la transacción.
+                Fragment support = new fragment_support();
+                FragmentTransaction transactionSupport = getFragmentManager().beginTransaction();
+                transactionSupport.replace(R.id.fragmentContainer, support);
+                transactionSupport.addToBackStack(null);
+
+                // Commit a la transacción
+                transactionSupport.commit();
+                break;
+            case R.id.buttonLogOut:
+                main.getUsers().clear();
+                Intent login = new Intent(v.getContext(), LoginActivity.class);
+                startActivity(login);
                 break;
         }
     }

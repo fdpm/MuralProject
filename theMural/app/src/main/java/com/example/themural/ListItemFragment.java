@@ -3,6 +3,7 @@ package com.example.themural;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -11,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.themural.data.model.Item;
-import com.example.themural.data.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +29,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
     private FirebaseFirestore db;
     private RecyclerView recyclerListItems;
     private Item item;
-
+    private ArrayList<Item>  posts;
 
     public ListItemFragment() {
         // Required empty public constructor
@@ -49,6 +51,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
         item = new Item();
+        posts = new ArrayList<>();
+
     }
 
     @Override
@@ -60,6 +64,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         BottomNavigationView filterOrderNav = root.findViewById(R.id.filterOrderNav);
         BottomNavigationView searchNav = root.findViewById(R.id.searchNav);
 //        recyclerListItems.setHasFixedSize(true);
+
+
 
         mostrarPost();
         return root;
@@ -77,16 +83,9 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                         if (task.getResult().size() > 0) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 item = document.toObject(Item.class);
-                                Log.e(">>>", item.getDescriptionItem());
+                                posts.add(item);
+                                Log.e(">>>",posts.get(0).getDescriptionItem());
 
-                       /* String nombre = documento.getString("nameItem");
-                        String descripcion = documento.getString("descriptionItem");
-                        String id = documento.getString("idItem");
-                        String locacion = documento.getString("locationItem");
-                        String tipo = documento.getString("typeItem");
-                        int precio = Integer.parseInt(documento.getString("priceItem"));
-                        int estado = Integer.parseInt(documento.getString("stateItem"));
-                        */
                             }
                         }
                     }

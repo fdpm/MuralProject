@@ -41,7 +41,6 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
 
     private Item item;
     private Main main;
-    private LoginActivity login;
 
     public fragment_post_details() {
         // Required empty public constructor
