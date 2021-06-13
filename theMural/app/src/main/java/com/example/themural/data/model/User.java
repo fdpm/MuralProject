@@ -22,6 +22,10 @@ public class User {
     private Image picture;
     private String type;
 
+    public User(){
+
+    }
+
     public User(String userId, String displayName) {
         this.userId = userId;
         this.displayName = displayName;

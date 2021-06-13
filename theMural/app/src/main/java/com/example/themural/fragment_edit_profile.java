@@ -68,9 +68,7 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonEditProfile:
 
-                break;
         }
     }
 }

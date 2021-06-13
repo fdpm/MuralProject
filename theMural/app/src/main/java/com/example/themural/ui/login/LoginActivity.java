@@ -26,12 +26,15 @@ import android.widget.Toast;
 
 import com.example.themural.HomeActivity;
 import com.example.themural.R;
+import com.example.themural.data.model.Main;
 import com.example.themural.data.model.User;
 import com.example.themural.sign_up_activity;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.UUID;
 
@@ -43,6 +46,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btnLogin;
     private Button btnRegistro;
     private  ProgressBar loadingProgressBar;
+
+    @SerializedName("userdb")
+    private User userdb;
 
     //private fragment_sign_up sign_up;
     private HomeActivity home;
@@ -159,24 +165,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 db.collection("usuarios")
                         .whereEqualTo("nickName",username)
                         .whereEqualTo("password",password)
-                        .get().addOnSuccessListener(
-
-                        query -> {
-                            if(query.getDocuments().size()==0){
-                                Intent login = new Intent(this, LoginActivity.class);
-                                startActivity(login);
-                                Toast.makeText(this, "Usuario o contraseña invalidos por favor intente de nuevo", Toast.LENGTH_LONG).show();
-                                Log.e(">>>>>>>>>>","NO Entro: El usuario es :"+username+" la contraseña es: "+password);
-
-                            }else{
-                                Intent home = new Intent(this, HomeActivity.class);
-                                home.putExtra("key1","nickName");
-                                home.putExtra("key2",username);
-                                Log.e(">>>>>>>>>>","Entro: El usuario es :"+username+" la contraseña es: "+password);
-                                startActivity(home);
-
-                            }
-                        });
+                        .get().addOnCompleteListener(
+                                task ->{
+                                    if (task.isSuccessful()) {
+                                        if(task.getResult().size() > 0){
+                                            for(QueryDocumentSnapshot document: task.getResult()){
+                                               userdb = document.toObject(User.class);
+                                                Main main = new Main();
+                                               main.newUser(userdb);
+                                               Log.e(">>>",main.getUsers().get(0).getName());
+                                                Intent home = new Intent(this, HomeActivity.class);
+                                                startActivity(home);
+                                                break;
+                                            }
+                                        }else{
+                                            Intent login = new Intent(this, LoginActivity.class);
+                                            startActivity(login);
+                                        }
+                                    }
+                                });
 
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());

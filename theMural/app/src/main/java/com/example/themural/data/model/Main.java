@@ -21,6 +21,12 @@ public class Main {
         }
     }
 
+    public void newUser(User user){
+        if(user != null){
+            users.add(user);
+        }
+    }
+
     public void editUser(String id, String name, String password, String phone, Image picture){
 
         if(name!= null && password!= null && phone!=null && picture!=null) {
