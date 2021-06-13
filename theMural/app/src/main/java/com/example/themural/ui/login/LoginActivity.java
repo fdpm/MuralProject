@@ -156,24 +156,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String password = passwordET.getText().toString();
                 User user = new User(UUID.randomUUID().toString(), username, password);
 
+                db.collection("usuarios")
+                        .whereEqualTo("name",username)
+                        .whereEqualTo("password",password)
+                        .get().addOnSuccessListener(
 
-                //Saber si el usuario ya esta registrado
-                    CollectionReference userRef = db.collection("usuarios");
-                    Query query = userRef.whereEqualTo("username",username);
-                    query.get().addOnCompleteListener(
-                        task -> {
-                            if(task.isSuccessful()){
-                                for(QueryDocumentSnapshot document : task.getResult()){
-                                    Toast.makeText(this, "El usuario ya se encuentra registrado", Toast.LENGTH_SHORT).show();
-                                }
+                        query -> {
+                            if(query.getDocuments().size()==0){
+                                Intent login = new Intent(this, LoginActivity.class);
+                                startActivity(login);
+                                Toast.makeText(this, "Usuario o contraseña invalidos por favor intente de nuevo", Toast.LENGTH_LONG).show();
+                                Log.e(">>>>>>", "El usuario no existe");
+
+                            }else{
+                                Intent home = new Intent(this, HomeActivity.class);
+                                home.putExtra("key1","username");
+                                home.putExtra("key2",username);
+                                Log.e(">>>>>>>>>>","El usuario es :"+username);
+                                startActivity(home);
 
                             }
-                        }
-                );
+                        });
+
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());
-                Intent home = new Intent(this, HomeActivity.class);
-                startActivity(home);
+
                 break;
             case R.id.btnRegistro:
                 Intent siguiente = new Intent(this, sign_up_activity.class);
@@ -183,8 +190,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
     }
-
-
 
 
 }
