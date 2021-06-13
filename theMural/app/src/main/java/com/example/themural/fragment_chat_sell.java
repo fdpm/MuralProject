@@ -21,7 +21,7 @@ import com.example.themural.adapter.ChatAdapter;
 public class fragment_chat_sell extends Fragment implements View.OnClickListener, ChatAdapter.OnChatListener {
 
     private RecyclerView chatSellList;
-
+    private ChatAdapter adapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -67,6 +67,8 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         chatSellList = root.findViewById(R.id.chatSellList);
         chatSellList.setHasFixedSize(true);
         chatSellList.setOnClickListener(this);
+        adapter = new ChatAdapter(this);
+        chatSellList.setAdapter(adapter);
         //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //chatSellList.setLayoutManager(layoutManager);
 
