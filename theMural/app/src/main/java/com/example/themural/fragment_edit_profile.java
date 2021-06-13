@@ -53,11 +53,11 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_edit_profile, container, false);
-        name = root.findViewById(R.id.nameET);
+        /*name = root.findViewById(R.id.nameET);
         password = root.findViewById(R.id.passwordET);
         telephone = root.findViewById(R.id.telephoneET);
         editPhoto = root.findViewById(R.id.buttonEditProfileImage);
-        confirmar = root.findViewById(R.id.buttonEditProfile);
+        confirmar = root.findViewById(R.id.buttonEditProfile);*/
 
         editPhoto.setOnClickListener(this);
         confirmar.setOnClickListener(this);
@@ -69,7 +69,7 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonEditProfile:
-                db.collection("usuarios").whereEqualTo("nickname","" )
+                db.collection("usuarios").whereEqualTo("nickname","")
                         .get().addOnSuccessListener(
                         query -> {
                             if (query.getDocuments().size() != 0) {
