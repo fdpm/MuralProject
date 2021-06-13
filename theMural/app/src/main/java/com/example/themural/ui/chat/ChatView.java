@@ -14,23 +14,23 @@ import org.jetbrains.annotations.NotNull;
 
 public class ChatView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    private ConstraintLayout root;
+    //private ConstraintLayout root;
     private TextView chatUserNameText;
     private TextView lastMessageText;
     private ChatAdapter.OnChatListener onChatListener;
 
-    public ChatView(ConstraintLayout root, ChatAdapter.OnChatListener onChatListener){
+    public ChatView(View root, ChatAdapter.OnChatListener onChatListener){
         super(root);
-        this.root=root;
+        //this.root=root;
         chatUserNameText = root.findViewById(R.id.chatUserNameText);
         lastMessageText = root.findViewById(R.id.lastMessageText);
         this.onChatListener = onChatListener;
         root.setOnClickListener(this);
     }
-
+/*
     public ConstraintLayout getRoot(){
         return root;
-    }
+    }*/
 
     public TextView getChatUserNameText(){
         return chatUserNameText;

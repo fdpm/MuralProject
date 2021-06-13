@@ -28,6 +28,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
         Chat ca = new Chat("pedro");
         ca.addMessage(new Message("hola"));
         chat.add(ca);
+        Chat caa = new Chat("pastor");
+        caa.addMessage(new Message("hola hola"));
+        chat.add(caa);
     }
 
     public void addChat(Chat nChat){
@@ -47,8 +50,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.fragment_chat_sell_view, parent, false);
-        ConstraintLayout rowroot = (ConstraintLayout) row;
-        ChatView chatView = new ChatView(rowroot, onChatListener);
+        //ConstraintLayout rowroot = (ConstraintLayout) row;
+        ChatView chatView = new ChatView(row, onChatListener);
 
         return chatView;
     }

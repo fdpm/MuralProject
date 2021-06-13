@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.themural.adapter.ChatAdapter;
 
@@ -40,13 +41,15 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_chat_sell, container,false);
-        chatSellList = root.findViewById(R.id.chatSellList);
+        chatSellList = (RecyclerView) root.findViewById(R.id.chatSellList);
         chatSellList.setHasFixedSize(true);
         chatSellList.setOnClickListener(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        chatSellList.setLayoutManager(layoutManager);
+
         adapter = new ChatAdapter(this);
         chatSellList.setAdapter(adapter);
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        //chatSellList.setLayoutManager(layoutManager);
 
         return root;
     }
