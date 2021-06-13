@@ -20,6 +20,10 @@ public class Chat {
         return message;
     }
 
+    public void addMessage(Message m){
+        message.add(m);
+    }
+
     public void setMessage(ArrayList<Message> message) {
         this.message = message;
     }
