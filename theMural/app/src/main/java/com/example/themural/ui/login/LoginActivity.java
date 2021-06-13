@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import com.example.themural.HomeActivity;
 import com.example.themural.R;
 import com.example.themural.data.model.User;
+import com.example.themural.sign_up_activity;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -44,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //private fragment_sign_up sign_up;
     private HomeActivity home;
+    private sign_up_activity signUp;
     
     //Firebase
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -55,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        //sign_up = fragment_sign_up.newInstance();
+        signUp = new sign_up_activity();
         home = new HomeActivity();
         usernameET = findViewById(R.id.username);
         passwordET = findViewById(R.id.password);
@@ -173,11 +176,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());
                 break;
             case R.id.btnRegistro:
-                //home.showFragment(sign_up);
+
+                this.GoToLoginActivity();
+
                 break;
 
 
         }
     }
 
+    private void GoToLoginActivity(){
+        Intent intent = new Intent(this, sign_up_activity.class);
+        startActivity(intent);
+    }
 }
