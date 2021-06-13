@@ -39,8 +39,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-
         navigator = findViewById(R.id.navigator);
 
         newItemFragment = NewItemFragment.newInstance();
@@ -49,9 +47,8 @@ public class HomeActivity extends AppCompatActivity {
         chatSell = fragment_chat_sell.newInstance();
         chatPurchase = fragment_chat_purchase.newInstance();
         profile = fragment_profile.newInstance();
-
-
-        showFragment(newItemFragment);
+        
+        showFragment(listItemFragment);
         navigator.setOnNavigationItemSelectedListener(
                 (menuItem)->{
                     switch (menuItem.getItemId()){
