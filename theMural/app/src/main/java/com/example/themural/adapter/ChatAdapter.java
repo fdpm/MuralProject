@@ -55,8 +55,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ChatView holder, int position) {
-        //holder.getChatUserNameText().setText(chat.get(position).get);
-        //holder.getChatUserNameText().setText(chat.get(position).get);
+        holder.getChatUserNameText().setText(chat.get(position).getType());
+        holder.getLastMessageText().setText(chat.get(position).getMessage().get(0).getContent());
     }
 
     @Override
