@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
     //Donde hosteamos las actividades a llamar
     private NewItemFragment newItemFragment;
     private ListItemFragment listItemFragment;
-    private fragment_post_item postItem;
+    private fragment_post_details postItem;
     private fragment_chat_sell chatSell;
     private fragment_chat_purchase chatPurchase;
     private fragment_profile profile;
@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
         newItemFragment = NewItemFragment.newInstance();
         listItemFragment = ListItemFragment.newInstance();
-        postItem = fragment_post_item.newInstance();
+        postItem = fragment_post_details.newInstance();
         chatSell = fragment_chat_sell.newInstance();
         chatPurchase = fragment_chat_purchase.newInstance();
         profile = fragment_profile.newInstance();

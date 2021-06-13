@@ -7,14 +7,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 
-public class fragment_post_details extends Fragment implements View.OnClickListener{
+
+public class fragment_post_details extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private FirebaseFirestore db;
     private EditText titleItem;
@@ -25,6 +31,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     private CheckBox checkBoxNone;
     private EditText priceItem;
     private Button buttonContinueDetail;
+    private Spinner spinnertype;
 
 
 
@@ -63,7 +70,21 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         priceItem = root.findViewById(R.id.priceItem);
         buttonContinueDetail = root.findViewById(R.id.buttonContinueDetail);
 
+        spinnertype = root.findViewById(R.id.spinnerType);
+
+        String[] opciones = {"Libro","Herramientas","Viviendas","Dispositivos","Monitorias","Vehiculos"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, opciones);
+        spinnertype.setAdapter(adapter);
+
+        spinnertype.getSelectedItem().toString();
         buttonContinueDetail.setOnClickListener(this);
+
+
+
+
+
+
 
         return root;
     }
@@ -75,6 +96,17 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
 
                 break;
         }
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
