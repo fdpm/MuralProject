@@ -3,6 +3,7 @@ package com.example.themural;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,7 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
             case R.id.buttonBooks:
 
                 break;
+
         }
 
     }
