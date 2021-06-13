@@ -68,15 +68,25 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonEditProfile:
-                // Crea el nuevo fragmento y la transacción.
-                Fragment nuevoFragmento = new fragment_edit_profile();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentContainer, nuevoFragmento);
-                transaction.addToBackStack(null);
+            case R.id.buttonViewPostsProfile:
+                Fragment myPosts = new fragment_my_posts();
+                FragmentTransaction transactionMyPost = getFragmentManager().beginTransaction();
+                transactionMyPost.replace(R.id.fragmentContainer, myPosts);
+                transactionMyPost.addToBackStack(null);
 
                 // Commit a la transacción
-                transaction.commit();
+                transactionMyPost.commit();
+                break;
+
+            case R.id.buttonEditProfile:
+                // Crea el nuevo fragmento y la transacción.
+                Fragment edit = new fragment_edit_profile();
+                FragmentTransaction transactionEdit = getFragmentManager().beginTransaction();
+                transactionEdit.replace(R.id.fragmentContainer, edit);
+                transactionEdit.addToBackStack(null);
+
+                // Commit a la transacción
+                transactionEdit.commit();
                 break;
         }
     }
