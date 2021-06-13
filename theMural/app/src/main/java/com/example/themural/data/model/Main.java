@@ -27,6 +27,12 @@ public class Main {
         }
     }
 
+    public void newPost(Item post){
+        if (post != null) {
+            posts.add(post);
+        }
+    }
+
     public void editUser(String id, String name, String password, String phone, Image picture){
 
         if(name!= null && password!= null && phone!=null && picture!=null) {

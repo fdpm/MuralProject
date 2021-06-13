@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btnRegistro;
     private  ProgressBar loadingProgressBar;
 
-    private Main main;
+    private static Main main;
     private User userdb;
 
     //private fragment_sign_up sign_up;
@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
-
         main = new Main();
         signUp = new sign_up_activity();
         home = new HomeActivity();
@@ -159,6 +158,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnLogin:
+                Intent intent = new Intent();
                 String username = usernameET.getText().toString();
                 String password = passwordET.getText().toString();
                 User user = new User(UUID.randomUUID().toString(), username, password);
@@ -179,6 +179,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             }
                                         }else{
                                             Intent login = new Intent(this, LoginActivity.class);
+
                                             startActivity(login);
                                         }
                                     }
@@ -197,5 +198,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public static Main getMain(){
+        return  main;
+    }
+
+    public void setMain(Main main){
+        this.main = main;
+    }
 
 }

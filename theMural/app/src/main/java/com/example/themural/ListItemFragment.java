@@ -62,4 +62,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
     }
+
+    public void mostrarPost(){
+        db.collection("publicaciones").document()
+    }
 }

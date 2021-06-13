@@ -1,5 +1,6 @@
 package com.example.themural;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.themural.data.model.Item;
 import com.example.themural.data.model.Main;
+import com.example.themural.ui.login.LoginActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -36,9 +38,9 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     private Button buttonContinueDetail;
     private Spinner spinnertype;
 
-    public Item item;
-    public Main main;
-
+    private Item item;
+    private Main main;
+    private LoginActivity login;
 
     public fragment_post_details() {
         // Required empty public constructor
@@ -59,13 +61,16 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
         item = new Item();
-        main = new Main();
+        main = LoginActivity.getMain();
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View root = inflater.inflate(R.layout.fragment_post_details_item, container, false);
         titleItem = root.findViewById(R.id.titleItem);
         descriptionItem = root.findViewById(R.id.descriptionItem);
@@ -99,8 +104,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonContinueDetail:
-                Log.e(">>>",main.getUsers().get(0).getName());
-                    tomarDatos();
+                tomarDatos();
                 db.collection("publicaciones").document(item.getIdItem()).set(item);
                 break;
         }
@@ -108,7 +112,6 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
     }
 
     public void tomarDatos(){
-
         item.setTypeItem(spinnertype.getSelectedItem().toString());
         item.setDescriptionItem(descriptionItem.getText().toString());
         item.setIdItem(main.getUsers().get(0).getUserId());
@@ -121,7 +124,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         }else if(checkBoxNone.isChecked()){
             item.setStateItem(2);
         }
-
+        main.newPost(item);
     }
 
     @Override
