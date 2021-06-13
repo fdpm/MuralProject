@@ -1,6 +1,7 @@
 package com.example.themural;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.themural.data.model.User;
 import com.example.themural.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -65,6 +67,17 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
                 startActivity(anterior);
 
             case R.id.buttonConfirmSignUp:
+                String nombre = nameSignUp.getText().toString();
+                String apellido = lastnameSignUp.getText().toString();
+                String contraeña = pwdSignUp.getText().toString();
+                String telefono = phoneSignUp.getText().toString();
+                Image imagen = null;
+
+                String nombreCompleto = nombre+" "+apellido;
+                User user = new User(nombreCompleto,contraeña,telefono,imagen);
+                user.setDisplayName(nombre);
+                db.collection("usuarios").document(user.getUserId()).set(user);
+
                 Intent login = new Intent(this, LoginActivity.class);
                 startActivity(login);
         }

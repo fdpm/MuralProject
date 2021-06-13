@@ -156,8 +156,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String password = passwordET.getText().toString();
                 User user = new User(UUID.randomUUID().toString(), username, password);
 
-                db.collection("usuarios").document(user.getUserId()).set(user);
-
 
                 //Saber si el usuario ya esta registrado
                     CollectionReference userRef = db.collection("usuarios");
@@ -174,6 +172,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 );
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameET.getText().toString(), passwordET.getText().toString());
+                Intent home = new Intent(this, HomeActivity.class);
+                startActivity(home);
                 break;
             case R.id.btnRegistro:
                 Intent siguiente = new Intent(this, sign_up_activity.class);
