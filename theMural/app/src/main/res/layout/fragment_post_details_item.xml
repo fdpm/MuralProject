@@ -72,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
+        <EditText
             android:id="@+id/descriptionItem"
             android:layout_width="314dp"
             android:layout_height="127dp"
@@ -87,7 +87,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleItem" />
 
-        <TextView
+        <EditText
             android:id="@+id/locationItem"
             android:layout_width="314dp"
             android:layout_height="50dp"
