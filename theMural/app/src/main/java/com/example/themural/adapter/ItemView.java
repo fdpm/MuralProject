@@ -1,9 +1,7 @@
 package com.example.themural.adapter;
 
-import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,20 +10,20 @@ import com.example.themural.R;
 public class ItemView extends RecyclerView.ViewHolder {
 
     private ConstraintLayout root;
-    private TextView titleItem;
-    private TextView descriptionItem;
-    private TextView  locationItem;
-    private TextView priceItem;
+    private TextView theItemTitle;
+    private TextView theDescItem;
+    private TextView  theLocationItem;
+    private TextView thePriceItem;
 
 
     public ItemView(ConstraintLayout root) {
         super(root);
         this.root = root;
         //Ids del xml itemrow
-        titleItem = root.findViewById(R.id.theItemTiltle);
-        descriptionItem = root.findViewById(R.id.theDescItem);
-        locationItem = root.findViewById(R.id.theLocationItem);
-        priceItem = root.findViewById(R.id.thePriceItem);
+        theItemTitle = root.findViewById(R.id.theItemTitle);
+        theDescItem = root.findViewById(R.id.theDescItem);
+        theLocationItem = root.findViewById(R.id.theLocationItem);
+        thePriceItem = root.findViewById(R.id.thePriceItem);
     }
 
     public ConstraintLayout getRoot() {
@@ -33,18 +31,18 @@ public class ItemView extends RecyclerView.ViewHolder {
     }
 
     public TextView getTitleItem() {
-        return titleItem;
+        return theItemTitle;
     }
 
     public TextView getDescriptionItem() {
-        return descriptionItem;
+        return theDescItem;
     }
 
     public TextView getLocationItem() {
-        return locationItem;
+        return theLocationItem;
     }
 
     public TextView getPriceItem() {
-        return priceItem;
+        return thePriceItem;
     }
 }

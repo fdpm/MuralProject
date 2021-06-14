@@ -90,7 +90,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
 //        recyclerListItems.setHasFixedSize(true);
 
 
-        recyclerListItems = (RecyclerView) root.findViewById(R.id.recyclerListItems);
+        //recyclerListItems = (RecyclerView) root.findViewById(R.id.recyclerListItems);
         recyclerListItems.setHasFixedSize(true);
         recyclerListItems.setOnClickListener(this);
 
@@ -116,6 +116,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                 task -> {
                     if (task.isSuccessful()) {
                         if (task.getResult().size() > 0) {
+                            //ArrayList<Item> theItems = task.getResult().toObjects(ArrayList<Item.class>);
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 item = document.toObject(Item.class);
                                 posts.add(item);

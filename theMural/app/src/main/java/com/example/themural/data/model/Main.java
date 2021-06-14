@@ -121,7 +121,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     //Metodo que se ejecuta por cada item en el arreglo
     public ItemView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View row = inflater.inflate(R.layout.itemrow, null);
+        View row = inflater.inflate(R.layout.itemrow,parent,false);
         ConstraintLayout rowroot = (ConstraintLayout) row;
         ItemView itemView = new ItemView(rowroot);
         return itemView;
@@ -141,4 +141,8 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         return posts.size();
     }
 
+    /*public interface Main{
+        void onChatClick(int position);
+    }
+    */
 }
