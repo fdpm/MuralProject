@@ -141,8 +141,8 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         return posts.size();
     }
 
-    /*public interface Main{
-        void onChatClick(int position);
+    public interface OnItemListener{
+        void onItemClick(int position);
     }
-    */
+
 }

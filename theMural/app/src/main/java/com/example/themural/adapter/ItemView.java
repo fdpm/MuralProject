@@ -1,19 +1,22 @@
 package com.example.themural.adapter;
 
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.themural.R;
+import com.example.themural.data.model.Main;
 
-public class ItemView extends RecyclerView.ViewHolder {
+public class ItemView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ConstraintLayout root;
     private TextView theItemTitle;
     private TextView theDescItem;
     private TextView  theLocationItem;
     private TextView thePriceItem;
+    private Main.OnItemListener onItemListener;
 
 
     public ItemView(ConstraintLayout root) {
@@ -44,5 +47,10 @@ public class ItemView extends RecyclerView.ViewHolder {
 
     public TextView getPriceItem() {
         return thePriceItem;
+    }
+
+    @Override
+    public void onClick(View v) {
+        onItemListener.onItemClick(getAdapterPosition());
     }
 }
