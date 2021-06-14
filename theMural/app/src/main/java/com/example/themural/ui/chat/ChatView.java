@@ -3,14 +3,10 @@ package com.example.themural.ui.chat;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.themural.R;
 import com.example.themural.adapter.ChatAdapter;
-
-import org.jetbrains.annotations.NotNull;
 
 public class ChatView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -23,7 +19,7 @@ public class ChatView extends RecyclerView.ViewHolder implements View.OnClickLis
         super(root);
         //this.root=root;
         chatUserNameText = root.findViewById(R.id.chatUserNameText);
-        lastMessageText = root.findViewById(R.id.lastMessageText);
+        lastMessageText = root.findViewById(R.id.chatViewText);
         this.onChatListener = onChatListener;
         root.setOnClickListener(this);
     }

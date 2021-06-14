@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,8 +62,11 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
 
     @Override
     public void onChatClick(int position) {
-        //Intent intent = new Intent(this, .class);
-        //intent.putExtra("selectedChat", );
-        //startActivity(intent);
+        fragment_chat_window cwFragment = new fragment_chat_window();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainer, cwFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
     }
 }
