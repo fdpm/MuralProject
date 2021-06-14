@@ -6,12 +6,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.themural.data.model.Item;
+import com.example.themural.data.model.Main;
+import com.example.themural.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 
 public class fragment_my_posts extends Fragment implements View.OnClickListener{
@@ -19,6 +24,7 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
     private FirebaseFirestore db;
     private RecyclerView recyclerViewMyPost;
     private BottomNavigationView navigationMyPost;
+    private Main main;
 
     public fragment_my_posts() {
         // Required empty public constructor
@@ -37,7 +43,7 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-
+        main = LoginActivity.getMain();
     }
 
     @Override
@@ -49,6 +55,8 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
         recyclerViewMyPost.setHasFixedSize(true);
         navigationMyPost = root.findViewById(R.id.navigationMyPost);
         navigationMyPost.setOnClickListener(this);
+
+        mostrar();
 
         return root;
     }
@@ -65,5 +73,26 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
                 break;
         }
 
+    }
+
+    public void mostrar(){
+        final Item[] item = {new Item()};
+        db.collection("publicaciones").get().addOnCompleteListener(
+                task -> {
+                    if (task.isSuccessful()) {
+                        if (task.getResult().size() > 0) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                item[0] = document.toObject(Item.class);
+                                if(item[0].getIdItem().contains(main.getUsers().get(0).getUserId())){
+                                    Log.e("descripcion: ","Name: "+item[0].getNameItem()+" Descripcion: "+item[0].getDescriptionItem()+
+                                            "precio"+item[0].getPriceItem());
+                                }
+
+
+
+                            }
+                        }
+                    }
+                });
     }
 }
