@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.themural.data.model.Main;
 import com.example.themural.data.model.User;
 import com.example.themural.ui.login.LoginActivity;
 import com.example.themural.ui.login.LoginViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -31,6 +33,7 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
     private EditText telephone;
     private Button editPhoto;
     private Button confirmar;
+    private BottomNavigationView btnNavigation;
 
     private Main main;
     private User user;
@@ -66,9 +69,11 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
         telephone = root.findViewById(R.id.telephoneET);
         editPhoto = root.findViewById(R.id.buttonEditProfileImage);
         confirmar = root.findViewById(R.id.buttonConfirmEditProfile);
+        btnNavigation = root.findViewById(R.id.bottomNavigationView4);
 
         editPhoto.setOnClickListener(this);
         confirmar.setOnClickListener(this);
+        btnNavigation.setOnClickListener(this);
         user = main.getUsers().get(0);
         name.setText(user.getName());
         password.setText(user.getPassword());
@@ -87,6 +92,14 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
                 db.collection("usuarios").document(user.getUserId()).set(user);
                 Intent home = new Intent(v.getContext(), HomeActivity.class);
                 startActivity(home);
+                break;
+            case R.id.bottomNavigationView4:
+                Fragment profile = new fragment_profile();
+                FragmentTransaction transactionProfile = getFragmentManager().beginTransaction();
+                transactionProfile.replace(R.id.fragmentContainer, profile);
+                transactionProfile.addToBackStack(null);
+                transactionProfile.commit();
+                break;
 
         }
     }

@@ -65,12 +65,12 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         posts = new ArrayList<>();
 
 
-        recyclerListItems.findViewById(R.id.recyclerListItems);
-        layoutManager = new LinearLayoutManager(this.getContext());
-        recyclerListItems.setLayoutManager(layoutManager);
+       // recyclerListItems.findViewById(R.id.recyclerListItems);
+      //  layoutManager = new LinearLayoutManager(this.getContext());
+        //recyclerListItems.setLayoutManager(layoutManager);
 
         adapter = new Main();
-        recyclerListItems.setAdapter(adapter);
+       // recyclerListItems.setAdapter(adapter);
 
     }
 
@@ -79,7 +79,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_list_item, container, false);
-        recyclerListItems = root.findViewById(R.id.recyclerViewMyPost);
+        recyclerListItems = root.findViewById(R.id.recyclerListItems);
         BottomNavigationView filterOrderNav = root.findViewById(R.id.filterOrderNav);
         BottomNavigationView searchNav = root.findViewById(R.id.searchNav);
 //        recyclerListItems.setHasFixedSize(true);
@@ -103,7 +103,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 item = document.toObject(Item.class);
                                 posts.add(item);
-                                Log.e(">>>", posts.get(0).getDescriptionItem());
+                                Log.e(">>>", item.getDescriptionItem());
 
                             }
                         }

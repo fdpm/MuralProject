@@ -65,6 +65,7 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
         buttonSupportProfile.setOnClickListener(this);
         buttonLogOut.setOnClickListener(this);
 
+
         return root;
     }
 
@@ -106,6 +107,7 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
                 Intent login = new Intent(v.getContext(), LoginActivity.class);
                 startActivity(login);
                 break;
+
         }
     }
 }

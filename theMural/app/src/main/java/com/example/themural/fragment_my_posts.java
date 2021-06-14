@@ -3,6 +3,7 @@ package com.example.themural;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -47,12 +48,22 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
         recyclerViewMyPost = root.findViewById(R.id.recyclerViewMyPost);
         recyclerViewMyPost.setHasFixedSize(true);
         navigationMyPost = root.findViewById(R.id.navigationMyPost);
+        navigationMyPost.setOnClickListener(this);
 
         return root;
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.navigationMyPost:
+                Fragment profile = new fragment_profile();
+                FragmentTransaction transactionProfile = getFragmentManager().beginTransaction();
+                transactionProfile.replace(R.id.fragmentContainer, profile);
+                transactionProfile.addToBackStack(null);
+                transactionProfile.commit();
+                break;
+        }
 
     }
 }

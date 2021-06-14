@@ -8,14 +8,17 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.themural.ui.login.LoginActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class fragment_support extends Fragment implements View.OnClickListener{
 
     private EditText mensaje;
     private FirebaseFirestore db;
+    private BottomNavigationView navigationSupport;
 
     public fragment_support(){
 
@@ -42,6 +45,9 @@ public class fragment_support extends Fragment implements View.OnClickListener{
         View root = inflater.inflate(R.layout.fragment_support, container, false);
         mensaje = root.findViewById(R.id.mensajeET);
         mensaje.setText("para soporte contactarse con: juancamilocast10@gmail.com");
+        navigationSupport = root.findViewById(R.id.navigationSupport);
+
+        navigationSupport.setOnClickListener(this);
         return root;
     }
 
@@ -49,6 +55,15 @@ public class fragment_support extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.navigationSupport:
+                Fragment profile = new fragment_profile();
+                FragmentTransaction transactionProfile = getFragmentManager().beginTransaction();
+                transactionProfile.replace(R.id.fragmentContainer, profile);
+                transactionProfile.addToBackStack(null);
+                transactionProfile.commit();
+                break;
+        }
 
     }
 }
