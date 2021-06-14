@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.themural.adapter.ChatAdapter;
 import com.example.themural.data.model.Item;
 
 import com.example.themural.data.model.Main;
@@ -33,10 +34,13 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
     private FirebaseFirestore db;
     private RecyclerView recyclerListItems;
 
+    private BottomNavigationView filterOrderNav;
+    private BottomNavigationView searchNav;
+
     private Item item;
     private ArrayList<Item> posts;
 
-    private LinearLayoutManager layoutManager;
+    //private LinearLayoutManager layoutManager;
 
     //El adaptador es el main
     private Main adapter;
@@ -64,13 +68,14 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         item = new Item();
         posts = new ArrayList<>();
 
+        /*
+        recyclerListItems.findViewById(R.id.recyclerListItems);
+        layoutManager = new LinearLayoutManager(this.getContext());
+        recyclerListItems.setLayoutManager(layoutManager);
+        adapter = new Main(this.);
+        recyclerListItems.setAdapter(adapter);
 
-       // recyclerListItems.findViewById(R.id.recyclerListItems);
-      //  layoutManager = new LinearLayoutManager(this.getContext());
-        //recyclerListItems.setLayoutManager(layoutManager);
-
-        adapter = new Main();
-       // recyclerListItems.setAdapter(adapter);
+         */
 
     }
 
@@ -80,9 +85,20 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_list_item, container, false);
         recyclerListItems = root.findViewById(R.id.recyclerListItems);
-        BottomNavigationView filterOrderNav = root.findViewById(R.id.filterOrderNav);
-        BottomNavigationView searchNav = root.findViewById(R.id.searchNav);
+        filterOrderNav = root.findViewById(R.id.filterOrderNav);
+        searchNav = root.findViewById(R.id.searchNav);
 //        recyclerListItems.setHasFixedSize(true);
+
+
+        recyclerListItems = (RecyclerView) root.findViewById(R.id.recyclerListItems);
+        recyclerListItems.setHasFixedSize(true);
+        recyclerListItems.setOnClickListener(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerListItems.setLayoutManager(layoutManager);
+
+        adapter = new Main();
+        recyclerListItems.setAdapter(adapter);
 
 
         mostrarPost();
