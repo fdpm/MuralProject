@@ -153,6 +153,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         holder.getDescriptionItem().setText(posts.get(position).getDescriptionItem());
         holder.getLocationItem().setText(posts.get(position).getLocationItem());
         holder.getPriceItem().setText(""+posts.get(position).getPriceItem());
+        holder.getTheItemType().setText(posts.get(position).getTypeItem());
     }
 
     @Override

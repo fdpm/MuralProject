@@ -12,10 +12,13 @@ import com.example.themural.data.model.Main;
 public class ItemView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ConstraintLayout root;
+
     private TextView theItemTitle;
     private TextView theDescItem;
     private TextView  theLocationItem;
     private TextView thePriceItem;
+    private TextView theItemType;
+
     private Main.OnItemListener onItemListener;
 
 
@@ -27,6 +30,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
         theDescItem = root.findViewById(R.id.theDescItem);
         theLocationItem = root.findViewById(R.id.theLocationItem);
         thePriceItem = root.findViewById(R.id.thePriceItem);
+        theItemType = root.findViewById(R.id.theItemType);
     }
 
     public ConstraintLayout getRoot() {
@@ -47,6 +51,10 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
 
     public TextView getPriceItem() {
         return thePriceItem;
+    }
+
+    public TextView getTheItemType() {
+        return theItemType;
     }
 
     @Override
