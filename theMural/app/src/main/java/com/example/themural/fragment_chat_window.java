@@ -69,6 +69,10 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
 
         returnToChatListButton = root.findViewById(R.id.returnToChatListButton);
         returnToChatListButton.setOnClickListener(this);
+        Bundle bundle = this.getArguments();
+        String nombre = (String) bundle.getString("nombre");
+        personTitleText = root.findViewById(R.id.personTitleText);
+        personTitleText.setText(nombre);
 
         return root;
     }

@@ -86,7 +86,8 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         transaction.replace(R.id.fragmentContainer, cwFragment);
         transaction.addToBackStack(null);
         Bundle bundle = new Bundle();
-        //bundle.put
+        bundle.putString("nombre", adapter.getChat().get(0).getType());
+        cwFragment.setArguments(bundle);
         transaction.commit();
 
     }
