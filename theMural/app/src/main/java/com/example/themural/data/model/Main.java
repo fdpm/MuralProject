@@ -73,7 +73,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         }
         return null;
     }
-    
+
     public void editPost(String id, String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, int stateItem, Image imageItem){
 
         if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null  && imageItem!=null) {
