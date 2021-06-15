@@ -114,6 +114,23 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.searchNav:
                 Log.e(">>", "estas en buscar");
+                db.collection("publicaciones").get().addOnCompleteListener(
+                        task -> {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() > 0) {
+                                    //ArrayList<Item> theItems = task.getResult().toObjects(ArrayList<Item.class>);
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        item = document.toObject(Item.class);
+                                        posts.add(item);
+                                        adapter.newPost(item);
+                                        Log.e(">>>", item.getDescriptionItem());
+
+                                    }
+                                }
+                            }
+                        });
+                adapter.filter("libro");
+                recyclerListItems.setAdapter(adapter);
                 break;
         }
     }
