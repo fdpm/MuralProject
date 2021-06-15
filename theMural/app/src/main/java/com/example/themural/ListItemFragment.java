@@ -149,9 +149,9 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                             //ArrayList<Item> theItems = task.getResult().toObjects(ArrayList<Item.class>);
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 item = document.toObject(Item.class);
-//                                posts.add(item);
+
                                 adapter.newPost(item);
-                                Log.e(">>>", item.getDescriptionItem());
+
 
                             }
                         }
