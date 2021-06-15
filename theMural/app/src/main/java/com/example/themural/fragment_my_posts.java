@@ -89,6 +89,7 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
                                 item[0] = document.toObject(Item.class);
                                 if (item[0].getIdItem().contains(main.getUsers().get(0).getUserId())) {
                                     main.newMyPost(item[0]);
+                                    Log.e("myPost",item[0].getDescriptionItem());
                                 }
                             }
                         }

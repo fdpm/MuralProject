@@ -164,6 +164,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         int valor = r.nextInt(Integer.MAX_VALUE);
         item.setTypeItem(spinnertype.getSelectedItem().toString());
         item.setDescriptionItem(descriptionItem.getText().toString());
+        item.setNameItem(titleItem.getText().toString());
         item.setIdItem(main.getUsers().get(0).getUserId()+"."+valor);
         item.setLocationItem(locationItem.getText().toString());
         item.setPriceItem(Integer.parseInt(priceItem.getText().toString()));
