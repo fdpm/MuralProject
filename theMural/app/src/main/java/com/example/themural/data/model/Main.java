@@ -133,6 +133,10 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         return posts;
     }
 
+    public ArrayList<Item> getMyPost(){
+        return myPost;
+    }
+
 
     @NonNull
     @Override
