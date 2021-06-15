@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 import com.example.themural.data.model.Item;
@@ -37,6 +38,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
 
     private BottomNavigationView filterOrderNav;
     private BottomNavigationView searchNav;
+    private Button buttonSeller;
 
     private Item item;
     private ArrayList<Item> posts;
@@ -90,6 +92,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         recyclerListItems = root.findViewById(R.id.recyclerListItems);
         filterOrderNav = root.findViewById(R.id.filterOrderNav);
         searchNav = root.findViewById(R.id.searchNav);
+        buttonSeller = root.findViewById(R.id.buttonSeller);
 //        recyclerListItems.setHasFixedSize(true);
 
 
@@ -101,6 +104,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         recyclerListItems.setLayoutManager(layoutManager);
 //        filterOrderNav.setOnClickListener(this);
         searchNav.setOnClickListener(this);
+        //buttonSeller.setOnClickListener(this);
 
 
 
@@ -144,6 +148,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                 adapter.filter("Vehiculos");
                 recyclerListItems.setAdapter(adapter);
                 break;
+            case R.id.buttonSeller:
+                Log.e("hello moto", "sizasiza");
         }
     }
 
