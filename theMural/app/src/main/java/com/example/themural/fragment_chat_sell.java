@@ -29,7 +29,7 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
 
     private FirebaseFirestore db;
 
-    private Main main;
+    private static Main main;
 
     public fragment_chat_sell() {
 
@@ -67,6 +67,8 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         User u = main.getUsers().get(0);
         chat.add(c);
         u.setChat(chat);
+        main.getUsers().set(0,u);
+        //LoginActivity.setMain(main);
         //db.collection("usuarios").document(u.getUserId()).set(u);
         adapter = new ChatAdapter(this, u.getChat());
         chatSellList.setAdapter(adapter);

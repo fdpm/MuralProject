@@ -71,16 +71,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageView> {
             holder.getDateText().setText(dateText);
             holder.getMessageUserNameText2().setVisibility(View.INVISIBLE);
             holder.getMessageViewText2().setVisibility(View.INVISIBLE);
-            holder.getConstraintLayout().setBackgroundColor(Color.parseColor("#87F48C"));
-            holder.getDateText().setBackgroundColor(Color.parseColor("#87F48C"));
+            holder.getConstraintLayout().setBackgroundColor(Color.parseColor("#C75CDF"));
+            holder.getDateText().setBackgroundColor(Color.parseColor("#C75CDF"));
         }else{
             holder.getMessageUserNameText2().setText(messages.get(position).getFrom());
             holder.getMessageViewText2().setText(messages.get(position).getContent());
             holder.getDateText().setText(dateText);
             holder.getMessageUserNameText().setVisibility(View.INVISIBLE);
             holder.getMessageViewText().setVisibility(View.INVISIBLE);
-            holder.getConstraintLayout().setBackgroundColor(Color.parseColor("#FFC107"));
-            holder.getDateText().setBackgroundColor(Color.parseColor("#FFC107"));
+            holder.getConstraintLayout().setBackgroundColor(Color.parseColor("#922CF6"));
+            holder.getMessageUserNameText2().setBackgroundColor(Color.parseColor("#922CF6"));
+            holder.getDateText().setBackgroundColor(Color.parseColor("#922CF6"));
+            holder.getMessageViewText2().setBackgroundColor(Color.parseColor("#922CF6"));
         }
 
     }
