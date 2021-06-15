@@ -6,6 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
     private TextView thePriceItem;
     private TextView theItemType;
     private TextView buttonSeller;
+    private TextView telET;
 
     private Main.OnItemListener onItemListener;
 
@@ -38,6 +40,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
         thePriceItem = root.findViewById(R.id.thePriceItem);
         theItemType = root.findViewById(R.id.theItemType);
         buttonSeller = root.findViewById(R.id.buttonSeller);
+        telET = root.findViewById(R.id.telET);
         buttonSeller.setOnClickListener(this);
     }
 
@@ -69,6 +72,14 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
         return buttonSeller;
     }
 
+    public TextView getTelET() {
+        return telET;
+    }
+
+    public void setTelET(TextView telET) {
+        this.telET = telET;
+    }
+
     public void setButtonSeller(TextView buttonSeller) {
         this.buttonSeller = buttonSeller;
     }
@@ -78,6 +89,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
 //        onItemListener.onItemClick(getAdapterPosition());
         switch (v.getId()) {
             case R.id.buttonSeller:
+
                 Toast.makeText(root.getContext(), "producto: "+theItemTitle.getText(), Toast.LENGTH_SHORT).show();
             break;
         }

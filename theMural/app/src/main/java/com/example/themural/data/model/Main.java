@@ -8,25 +8,28 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.themural.R;
 import com.example.themural.adapter.ItemView;
-import com.example.themural.fragment_chat_sell;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Main extends RecyclerView.Adapter<ItemView> {
 
     private ArrayList<User> users;
     private ArrayList<Item> posts;
-
+    private ArrayList<String> num;
     private ArrayList<Item> myPost;
     private String category;
     private boolean click;
 
+    private FirebaseFirestore db;
     private OnItemListener onItemListener;
 
 
@@ -34,7 +37,9 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         users = new ArrayList<User>();
         posts = new ArrayList<Item>();
         myPost = new ArrayList<Item>();
+        num = new ArrayList<>();
         click = false;
+        db = FirebaseFirestore.getInstance();
     }
 
     public void newUser(User user){
@@ -177,13 +182,50 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         return itemView;
     }
 
+    public ArrayList<String> getNum() {
+        return num;
+    }
+
+    public void setNum(ArrayList<String> num) {
+        this.num = num;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ItemView holder, int position) {
+        /*num = new ArrayList<String>();
+        AtomicReference<String> temp = new AtomicReference<>("");
+        db.collection("publicaciones").get().addOnCompleteListener(
+                task -> {
+                    if (task.isSuccessful()) {
+                        if (task.getResult().size() > 0) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                temp.set(document.toObject(Item.class).getIdItem());
+                            }
+                            String r = temp.get();
+                            String[] telefono = r.split("\\.");
+                            db.collection("usuarios")
+                                    .whereEqualTo("userId",telefono[0])
+                                    .get().addOnCompleteListener(
+                                    task1 -> {
+                                        if (task1.isSuccessful()) {
+                                            if (task1.getResult().size() > 0) {
+                                                for (QueryDocumentSnapshot document1 : task1.getResult()) {
+                                                    tel = document1.toObject(User.class).getPhone();
+                                                }
+
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });*/
         holder.getTitleItem().setText(posts.get(position).getNameItem());
         holder.getDescriptionItem().setText(posts.get(position).getDescriptionItem());
         holder.getLocationItem().setText(posts.get(position).getLocationItem());
         int precio = (int)posts.get(position).getPriceItem();
         holder.getPriceItem().setText(""+precio);
+        Random tel = new Random();
+        holder.getTelET().setText("Telefono: "+tel.nextInt(9999999));
         holder.getTheItemType().setText(posts.get(position).getTypeItem());
     }
 
@@ -191,6 +233,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     public int getItemCount() {
         return posts.size();
     }
+
 
     public interface OnItemListener{
         void onItemClick(int position);
