@@ -6,11 +6,13 @@ import java.util.UUID;
 public class Message {
 
     private String id;
+    private String from;
     private String content;
     private long date;
 
-    public Message(String content){
+    public Message(String content, String from){
         this.content=content;
+        this.from = from;
         this.date = new Date().getTime();
         this.id = UUID.randomUUID().toString();
     }
@@ -25,5 +27,9 @@ public class Message {
 
     public long getDate() {
         return date;
+    }
+
+    public String getFrom() {
+        return from;
     }
 }

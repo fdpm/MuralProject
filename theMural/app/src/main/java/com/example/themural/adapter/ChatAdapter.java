@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.themural.R;
 import com.example.themural.data.model.Chat;
+import com.example.themural.data.model.Main;
 import com.example.themural.data.model.Message;
 import com.example.themural.ui.chat.ChatView;
+import com.example.themural.ui.login.LoginActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,15 +24,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
     private ArrayList<Chat> chat;
     private OnChatListener onChatListener;
 
+    private Main main;
+
     public ChatAdapter(OnChatListener onChatListener){
         this.onChatListener = onChatListener;
+        main = LoginActivity.getMain();
         chat = new ArrayList<>();
+
+        //main.getUsers().get(0).getChat()
+
         Chat ca = new Chat("pedro");
-        ca.addMessage(new Message("hola"));
+        ca.addMessage(new Message("hola", "pedro"));
         chat.add(ca);
-        Chat caa = new Chat("pastor");
-        caa.addMessage(new Message("hola hola"));
-        chat.add(caa);
+
+        //Chat caa = new Chat("pastor");
+        //caa.addMessage(new Message("hola hola"));
+        //chat.add(caa);
     }
 
     public void addChat(Chat nChat){
@@ -52,6 +61,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
         View row = inflater.inflate(R.layout.fragment_chat_sell_view, parent, false);
         //ConstraintLayout rowroot = (ConstraintLayout) row;
         ChatView chatView = new ChatView(row, onChatListener);
+
 
         return chatView;
     }

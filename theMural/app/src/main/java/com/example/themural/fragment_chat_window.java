@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.themural.adapter.MessageAdapter;
+import com.example.themural.data.model.Main;
 import com.example.themural.data.model.Message;
+import com.example.themural.ui.login.LoginActivity;
 
 public class fragment_chat_window extends Fragment implements  View.OnClickListener{
 
@@ -23,6 +25,7 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
     private RecyclerView messageList;
 
     private MessageAdapter messageAdapter;
+    private Main main;
 
     public fragment_chat_window() {
 
@@ -38,6 +41,7 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        main = LoginActivity.getMain();
         super.onCreate(savedInstanceState);
     }
 
@@ -69,9 +73,12 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
             case R.id.sendMessageButton:
                 if (!messageText.getText().toString().isEmpty()){
                     String textMessage = messageText.getText().toString();
-                    Message nMessage = new Message(textMessage);
-                    System.out.println(nMessage.getContent());
+                    Message nMessage = new Message(textMessage,main.getUsers().get(0).getName());
+                    Message tMessage = new Message("Hola","Pedro");
+                    //System.out.println(nMessage.getContent());
+                    messageText.setText("");
                     messageAdapter.addMessage(nMessage);
+                    messageAdapter.addMessage(tMessage);
                 }
                 break;
 

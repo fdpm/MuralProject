@@ -1,6 +1,8 @@
 package com.example.themural.data.model;
 
 import android.media.Image;
+
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -12,7 +14,7 @@ public class User {
     public final static String PURCHASER ="purchaser";
 
     private static Main main;
-    private Chat chat;
+    private ArrayList<Chat> chat;
     private String nickName;
     private String userId;
     private String displayName;
@@ -57,11 +59,11 @@ public class User {
         this.nickName = nickName;
     }
 
-    public Chat getChat() {
+    public ArrayList<Chat> getChat() {
         return chat;
     }
 
-    public void setChat(Chat chat) {
+    public void setChat(ArrayList<Chat> chat) {
         this.chat = chat;
     }
 
