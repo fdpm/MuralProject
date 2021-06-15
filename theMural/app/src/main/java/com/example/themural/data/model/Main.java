@@ -18,10 +18,12 @@ public class Main extends RecyclerView.Adapter<ItemView> {
 
     private ArrayList<User> users;
     private ArrayList<Item> posts;
+    private ArrayList<Item> myPost;
 
     public Main() {
         users = new ArrayList<User>();
         posts = new ArrayList<Item>();
+        myPost = new ArrayList<Item>();
     }
 
 
@@ -43,6 +45,13 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     public void newPost(Item post){
         if (post != null) {
             posts.add(post);
+            this.notifyDataSetChanged();
+        }
+    }
+
+    public void newMyPost(Item post){
+        if(post!=null){
+            myPost.add(post);
             this.notifyDataSetChanged();
         }
     }
@@ -106,6 +115,15 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         return null;
     }
 
+    public void filter(String category){
+        ArrayList<Item> filteredPosts = new ArrayList<Item>();
+        for (int i=0;i<posts.size();i++){
+            if(posts.get(i).getTypeItem().equals(category)){
+                    filteredPosts.add(posts.get(i));
+            }
+        }
+        posts = filteredPosts;
+    }
 
     public ArrayList<User> getUsers() {
         return users;
@@ -113,6 +131,10 @@ public class Main extends RecyclerView.Adapter<ItemView> {
 
     public ArrayList<Item> getPosts() {
         return posts;
+    }
+
+    public ArrayList<Item> getMyPost(){
+        return myPost;
     }
 
 

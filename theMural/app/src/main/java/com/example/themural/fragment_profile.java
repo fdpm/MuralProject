@@ -104,6 +104,8 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
                 break;
             case R.id.buttonLogOut:
                 main.getUsers().clear();
+                main.getPosts().clear();
+                main.getMyPost().clear();
                 Intent login = new Intent(v.getContext(), LoginActivity.class);
                 startActivity(login);
                 break;
