@@ -16,9 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class fragment_support extends Fragment implements View.OnClickListener{
 
-    private EditText mensaje;
     private FirebaseFirestore db;
     private BottomNavigationView navigationSupport;
+    private EditText editTextMultiple;
 
     public fragment_support(){
 
@@ -43,10 +43,9 @@ public class fragment_support extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_support, container, false);
-        mensaje = root.findViewById(R.id.mensajeET);
-        mensaje.setText("para soporte contactarse con: juancamilocast10@gmail.com");
         navigationSupport = root.findViewById(R.id.navigationSupport);
-
+        editTextMultiple = root.findViewById(R.id.mensajeETM);
+        editTextMultiple.setText("para soporte contactarse con: juancamilocast10@gmail.com");
         navigationSupport.setOnClickListener(this);
         return root;
     }

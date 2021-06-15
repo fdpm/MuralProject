@@ -34,9 +34,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
         //main.getUsers().get(0).getChat()
 
         //dummy
+<<<<<<< Updated upstream
         //Chat ca = new Chat("pedro");
         //ca.addMessage(new Message("hola", "pedro"));
         //chat.add(ca);
+=======
+        Chat ca = new Chat("pedro");
+        ca.addMessage(new Message("hola", "pedro"));
+        chat.add(ca);
+
+>>>>>>> Stashed changes
     }
 
     public void addChat(Chat nChat){
@@ -47,6 +54,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
     public void deleteChat(Chat dChat){
         chat.remove(dChat);
         this.notifyDataSetChanged();
+    }
+
+    public ArrayList<Chat> getChat(){
+        return chat;
     }
 
     @NonNull
