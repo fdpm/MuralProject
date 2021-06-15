@@ -106,8 +106,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         //buttonSeller.setOnClickListener(this);
 
         showPost();
-        filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem)->{
-            switch (upMenuItem.getItemId()){
+        filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem) -> {
+            switch (upMenuItem.getItemId()) {
                 case R.id.filterItem:
                     // Crea el nuevo fragmento y la transacción.
                     Fragment support = new fragment_post_item();
@@ -116,6 +116,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                     transactionSupport.addToBackStack(null);
                     // Commit a la transacción
                     transactionSupport.commit();
+                    adapter.filter("Libro");
+                    recyclerListItems.setAdapter(adapter);
                     break;
                 case R.id.sortItem:
                     adapter.reverse();
@@ -126,13 +128,15 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         });
 
         return root;
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.searchNav:
-
+                adapter.filter("Libro");
+                recyclerListItems.setAdapter(adapter);
                 break;
             case R.id.buttonSeller:
                 Log.e("hello moto", "sizasiza");
@@ -157,7 +161,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                         }
                     }
                 });
-        adapter.filter(category);
+//        adapter.filter("Libro");
         recyclerListItems.setAdapter(adapter);
 
     }
