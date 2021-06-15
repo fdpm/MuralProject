@@ -58,6 +58,7 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
         messageList.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setStackFromEnd(true);
         messageList.setLayoutManager(layoutManager);
 
         personTitleText = root.findViewById(R.id.personTitleText);
@@ -92,6 +93,7 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
                     main.getUsers().get(0).getChat().get(0).addMessage(nMessage);
                     //dummy
                     messageAdapter.addMessage(tMessage);
+                    messageList.smoothScrollToPosition(messageAdapter.getItemCount() - 1);
                 }
                 break;
 

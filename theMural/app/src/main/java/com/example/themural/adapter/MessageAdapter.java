@@ -66,6 +66,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageView> {
         String dateText = df2.format(date);
 
         if(messages.get(position).getFrom().equals(nombre)){
+            holder.getMessageUserNameText().setVisibility(View.VISIBLE);
+            holder.getMessageViewText().setVisibility(View.VISIBLE);
             holder.getMessageUserNameText().setText(messages.get(position).getFrom());
             holder.getMessageViewText().setText(messages.get(position).getContent());
             holder.getDateText().setText(dateText);
@@ -74,6 +76,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageView> {
             holder.getConstraintLayout().setBackgroundColor(Color.parseColor("#C75CDF"));
             holder.getDateText().setBackgroundColor(Color.parseColor("#C75CDF"));
         }else{
+            holder.getMessageUserNameText2().setVisibility(View.VISIBLE);
+            holder.getMessageViewText2().setVisibility(View.VISIBLE);
             holder.getMessageUserNameText2().setText(messages.get(position).getFrom());
             holder.getMessageViewText2().setText(messages.get(position).getContent());
             holder.getDateText().setText(dateText);
