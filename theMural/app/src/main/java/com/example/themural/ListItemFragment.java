@@ -17,6 +17,7 @@ import com.example.themural.data.model.Item;
 
 import com.example.themural.data.model.Main;
 
+import com.example.themural.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -67,7 +68,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         item = new Item();
         posts = new ArrayList<>();
-
+        adapter = LoginActivity.getMain();
         /*
         recyclerListItems.findViewById(R.id.recyclerListItems);
         layoutManager = new LinearLayoutManager(this.getContext());
@@ -97,8 +98,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerListItems.setLayoutManager(layoutManager);
 
-        adapter = new Main();
-        recyclerListItems.setAdapter(adapter);
+
+
 
 
         mostrarPost();
@@ -120,12 +121,14 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 item = document.toObject(Item.class);
                                 posts.add(item);
+                                adapter.newPost(item);
                                 Log.e(">>>", item.getDescriptionItem());
 
                             }
                         }
                     }
                 });
+        recyclerListItems.setAdapter(adapter);
         /*
         public void mostrarPosts() {
             db.collection("publicaciones").document();

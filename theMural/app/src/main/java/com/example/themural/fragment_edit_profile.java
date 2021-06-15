@@ -90,6 +90,7 @@ public class fragment_edit_profile extends Fragment implements View.OnClickListe
                 user.setPassword(password.getText().toString());
                 user.setPhone(telephone.getText().toString());
                 db.collection("usuarios").document(user.getUserId()).set(user);
+
                 Intent home = new Intent(v.getContext(), HomeActivity.class);
                 startActivity(home);
                 break;

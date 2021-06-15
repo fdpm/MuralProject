@@ -130,10 +130,9 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     @Override
     public void onBindViewHolder(@NonNull ItemView holder, int position) {
         holder.getTitleItem().setText(posts.get(position).getNameItem());
-        holder.getTitleItem().setText(posts.get(position).getDescriptionItem());
-        holder.getTitleItem().setText(posts.get(position).getLocationItem());
-        holder.getTitleItem().setText((int) posts.get(position).getPriceItem());
-
+        holder.getDescriptionItem().setText(posts.get(position).getDescriptionItem());
+        holder.getLocationItem().setText(posts.get(position).getLocationItem());
+        holder.getPriceItem().setText(""+posts.get(position).getPriceItem());
     }
 
     @Override
