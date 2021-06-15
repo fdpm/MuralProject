@@ -111,6 +111,10 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         posts.remove(deletedPost);
     }
 
+    public void refreshPosts(){
+        posts.clear();
+    }
+
     public Item findPost(String id) {
         for(Item post : posts) {
             if(post.getIdItem().equals(id))
