@@ -138,7 +138,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
                 tomarDatos();
                 Toast.makeText(getContext(),"Se agregó correctamente",Toast.LENGTH_SHORT).show();
                 db.collection("publicaciones").document(item.getIdItem()).set(item);
-                
+
                 Intent home = new Intent(v.getContext(), HomeActivity.class);
                 startActivity(home);
                 break;

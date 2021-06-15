@@ -72,23 +72,32 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
                 String telefono = phoneSignUp.getText().toString();
                 String pwdConf = pwdConfirmar.getText().toString();
                 Image imagen = null;
+                db.collection("usuarios")
+                        .whereEqualTo("nickName", nicknam)
+                        .get().addOnCompleteListener(
+                        task -> {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() > 0) {
+                                    Toast.makeText(this, "El usuario ya se encuentra registrado", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    if (pwdConf.equals(contraeña)) {
 
-                if(pwdConf.equals(contraeña)) {
-
-                    User user = new User(nombre, nicknam, contraeña, telefono, imagen);
-                    user.setDisplayName(nombre);
-                    db.collection("usuarios").document(user.getUserId()).set(user);
-                    nameSignUp.setText("");
-                    nickname.setText("");
-                    pwdSignUp.setText("");
-                    phoneSignUp.setText("");
-                    Intent login = new Intent(this, LoginActivity.class);
-                    startActivity(login);
-                }else{
-                    Toast.makeText(this,"Contraseña diferentes",Toast.LENGTH_SHORT).show();
-                }
+                                        User user = new User(nombre, nicknam, contraeña, telefono, imagen);
+                                        user.setDisplayName(nombre);
+                                        db.collection("usuarios").document(user.getUserId()).set(user);
+                                        nameSignUp.setText("");
+                                        nickname.setText("");
+                                        pwdSignUp.setText("");
+                                        phoneSignUp.setText("");
+                                        Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show();
+                                        Intent login = new Intent(this, LoginActivity.class);
+                                        startActivity(login);
+                                    } else {
+                                        Toast.makeText(this, "Contraseña diferentes", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
         }
     }
-
-
 }
