@@ -64,8 +64,10 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
 
         ArrayList<Chat> chat = new ArrayList<>();
         Chat c = new Chat("Juan");
+        Chat cc = new Chat("Paco");
         User u = main.getUsers().get(0);
         chat.add(c);
+        chat.add(cc);
         u.setChat(chat);
         main.getUsers().set(0,u);
         //LoginActivity.setMain(main);
@@ -88,7 +90,7 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         transaction.replace(R.id.fragmentContainer, cwFragment);
         transaction.addToBackStack(null);
         Bundle bundle = new Bundle();
-        bundle.putString("nombre", adapter.getChat().get(0).getType());
+        bundle.putString("nombre", adapter.getChat().get(position).getType());
         cwFragment.setArguments(bundle);
         transaction.commit();
 
