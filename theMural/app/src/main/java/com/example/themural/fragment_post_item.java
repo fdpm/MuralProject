@@ -25,6 +25,7 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
     private Button buttonMonitoring;
     private Button buttonVehicles;
     private Main main;
+    private OnfilterCategory observer;
 
     public fragment_post_item() {
         // Required empty public constructor
@@ -75,6 +76,7 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.buttonBooks:
                 main.setCategory("Libro");
+//                observer.filterCategory("Libro");
                 Fragment support = new ListItemFragment();
                 FragmentTransaction transactionSupport = getFragmentManager().beginTransaction();
                 transactionSupport.replace(R.id.fragmentContainer, support);
@@ -112,6 +114,7 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
                 break;
             case R.id.buttonMonitoring:
                 main.setCategory("Monitorias");
+//                observer.filterCategory("Monitorias");
                 Fragment support5 = new ListItemFragment();
                 FragmentTransaction transactionSupport5 = getFragmentManager().beginTransaction();
                 transactionSupport5.replace(R.id.fragmentContainer, support5);
@@ -131,5 +134,13 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
 
         }
 
+    }
+
+    public void setObserver(OnfilterCategory observer){
+        this.observer = observer;
+    }
+
+    public interface OnfilterCategory {
+        void filterCategory(String category);
     }
 }
