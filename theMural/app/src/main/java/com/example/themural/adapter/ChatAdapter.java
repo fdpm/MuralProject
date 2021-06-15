@@ -34,6 +34,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
         //main.getUsers().get(0).getChat()
 
         //dummy
+<<<<<<< HEAD
         //Chat ca = new Chat("pedro");
         //ca.addMessage(new Message("hola", "pedro"));
         //chat.add(ca);
@@ -42,6 +43,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
         ca.addMessage(new Message("hola", "pedro"));
         chat.add(ca);
 
+=======
+>>>>>>> 08465171a45663e8eee0551cc27e78f81a117c72
 
     }
 
@@ -76,7 +79,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull ChatView holder, int position) {
         holder.getChatUserNameText().setText(chat.get(position).getType());
-        holder.getLastMessageText().setText(chat.get(position).getMessage().get(0).getContent());
+        if (!chat.get(position).getMessage().isEmpty()){
+            holder.getLastMessageText().setText(chat.get(position).getMessage().get(0).getContent());
+        }else{
+            holder.getLastMessageText().setText("Nuevo chat");
+        }
+
     }
 
     @Override

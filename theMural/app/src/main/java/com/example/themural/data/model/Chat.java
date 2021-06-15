@@ -11,6 +11,9 @@ public class Chat {
 
     private String type;
 
+    public Chat() {
+    }
+
     public Chat(String type) {
         this.type = type;
         message = new ArrayList<Message>();

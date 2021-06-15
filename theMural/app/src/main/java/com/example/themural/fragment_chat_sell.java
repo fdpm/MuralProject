@@ -14,13 +14,20 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.themural.adapter.ChatAdapter;
+import com.example.themural.data.model.Chat;
 import com.example.themural.data.model.Main;
+import com.example.themural.data.model.User;
 import com.example.themural.ui.login.LoginActivity;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class fragment_chat_sell extends Fragment implements View.OnClickListener, ChatAdapter.OnChatListener {
 
     private RecyclerView chatSellList;
     private ChatAdapter adapter;
+
+    private FirebaseFirestore db;
 
     private Main main;
 
@@ -39,6 +46,7 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
         main = LoginActivity.getMain();
     }
 
@@ -54,7 +62,13 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         chatSellList.setLayoutManager(layoutManager);
 
-        adapter = new ChatAdapter(this, main.getUsers().get(0).getChat());
+        ArrayList<Chat> chat = new ArrayList<>();
+        Chat c = new Chat("Juan");
+        User u = main.getUsers().get(0);
+        chat.add(c);
+        u.setChat(chat);
+        //db.collection("usuarios").document(u.getUserId()).set(u);
+        adapter = new ChatAdapter(this, u.getChat());
         chatSellList.setAdapter(adapter);
 
         return root;
