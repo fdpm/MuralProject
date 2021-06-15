@@ -63,7 +63,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageView> {
         SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String dateText = df2.format(date);
 
-        //holder.getMessageUserNameText().setText(messages.get(position).getId());
         if(messages.get(position).getFrom().equals(nombre)){
             holder.getMessageUserNameText().setText(messages.get(position).getFrom());
             holder.getMessageViewText().setText(messages.get(position).getContent());
