@@ -3,6 +3,7 @@ package com.example.themural;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +29,7 @@ import java.util.ArrayList;
  * Use the {@link ListItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListItemFragment extends Fragment implements View.OnClickListener {
+public class ListItemFragment extends Fragment implements View.OnClickListener, Main.OnItemListener {
 
     //state
     private FirebaseFirestore db;
@@ -102,7 +103,11 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
 
 
 
+
         showPost();
+
+        //mostrarPost();
+
         return root;
     }
 
@@ -161,5 +166,14 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
    
          */
 
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        fragment_detail_item cwFragment = new fragment_detail_item();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainer, cwFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
