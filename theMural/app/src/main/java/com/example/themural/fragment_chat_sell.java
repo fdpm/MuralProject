@@ -14,11 +14,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.themural.adapter.ChatAdapter;
+import com.example.themural.data.model.Main;
+import com.example.themural.ui.login.LoginActivity;
 
 public class fragment_chat_sell extends Fragment implements View.OnClickListener, ChatAdapter.OnChatListener {
 
     private RecyclerView chatSellList;
     private ChatAdapter adapter;
+
+    private Main main;
 
     public fragment_chat_sell() {
 
@@ -35,6 +39,7 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        main = LoginActivity.getMain();
     }
 
     @Override
@@ -49,7 +54,7 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         chatSellList.setLayoutManager(layoutManager);
 
-        adapter = new ChatAdapter(this);
+        adapter = new ChatAdapter(this, main.getUsers().get(0).getChat());
         chatSellList.setAdapter(adapter);
 
         return root;
@@ -66,6 +71,8 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragmentContainer, cwFragment);
         transaction.addToBackStack(null);
+        Bundle bundle = new Bundle();
+        //bundle.put
         transaction.commit();
 
     }

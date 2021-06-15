@@ -81,11 +81,11 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
                     String textMessage = messageText.getText().toString();
                     Message nMessage = new Message(textMessage,main.getUsers().get(0).getName());
                     //dummy
-                    Message tMessage = new Message("Hola","Pedro");
+                    //Message tMessage = new Message("Hola","Pedro");
                     messageText.setText("");
                     messageAdapter.addMessage(nMessage);
                     //dummy
-                    messageAdapter.addMessage(tMessage);
+                    //messageAdapter.addMessage(tMessage);
                 }
                 break;
 

@@ -24,19 +24,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
     private ArrayList<Chat> chat;
     private OnChatListener onChatListener;
 
-    private Main main;
+    //private Main main;
 
-    public ChatAdapter(OnChatListener onChatListener){
+    public ChatAdapter(OnChatListener onChatListener, ArrayList<Chat> chat){
         this.onChatListener = onChatListener;
-        main = LoginActivity.getMain();
-        chat = new ArrayList<>();
+        //main = LoginActivity.getMain();
+        this.chat = chat;
 
         //main.getUsers().get(0).getChat()
 
         //dummy
-        Chat ca = new Chat("pedro");
-        ca.addMessage(new Message("hola", "pedro"));
-        chat.add(ca);
+        //Chat ca = new Chat("pedro");
+        //ca.addMessage(new Message("hola", "pedro"));
+        //chat.add(ca);
     }
 
     public void addChat(Chat nChat){

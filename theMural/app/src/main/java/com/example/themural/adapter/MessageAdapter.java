@@ -27,6 +27,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageView> {
     private Main main;
 
     public MessageAdapter(){
+        main = LoginActivity.getMain();
+        //messages = main.getUsers().get(0).getChat().
         messages = new ArrayList<>();
     }
 
@@ -55,7 +57,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageView> {
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MessageView holder, int position) {
-        main = LoginActivity.getMain();
+
         String nombre = main.getUsers().get(0).getName();
 
         long val = messages.get(position).getDate();

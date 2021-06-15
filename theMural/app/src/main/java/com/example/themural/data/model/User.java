@@ -31,6 +31,7 @@ public class User {
     public User(String userId, String displayName) {
         this.userId = userId;
         this.displayName = displayName;
+        chat = new ArrayList<>();
     }
 
     public User(String userId, String displayName,String password){
@@ -38,6 +39,7 @@ public class User {
 
         this.displayName = displayName;
         this.password = password;
+        chat = new ArrayList<>();
     }
 
     public User(String name, String nickName, String password, String phone, Image picture) {
@@ -48,6 +50,7 @@ public class User {
         this.picture = picture;
         type = PURCHASER;
         userId = UUID.randomUUID().toString();
+        chat = new ArrayList<>();
 
     }
 
