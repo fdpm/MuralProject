@@ -45,7 +45,11 @@ public class fragment_support extends Fragment implements View.OnClickListener{
         View root = inflater.inflate(R.layout.fragment_support, container, false);
         navigationSupport = root.findViewById(R.id.navigationSupport);
         editTextMultiple = root.findViewById(R.id.mensajeETM);
-        editTextMultiple.setText("para soporte contactarse con: juancamilocast10@gmail.com");
+        String mensaje = "Esta aplicación se hizo como proyecto final del curso de Aplicaciones" +
+                "moviles donde los desarrolladores fueron estudiantes del mismo curso. Para más información" +
+                " o ayuda comunicarse al correo: " +
+                "juan.castillo11@u.icesi.edu.co";
+        editTextMultiple.setText(mensaje);
         navigationSupport.setOnClickListener(this);
         return root;
     }
