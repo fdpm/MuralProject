@@ -81,7 +81,6 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
 
     public void mostrar() {
         final Item[] item = {new Item()};
-        AtomicReference<User> userdb = new AtomicReference<>(new User());
         db.collection("publicaciones").get().addOnCompleteListener(
                 task -> {
                     if (task.isSuccessful()) {

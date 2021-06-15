@@ -97,7 +97,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerListItems.setLayoutManager(layoutManager);
-
+        filterOrderNav.setOnClickListener(this);
+        searchNav.setOnClickListener(this);
 
 
 
@@ -108,7 +109,14 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.filterItem:
+                Log.e(">>", "estas en filtro");
+                break;
+            case R.id.searchNav:
+                Log.e(">>", "estas en buscar");
+                break;
+        }
     }
 
 
