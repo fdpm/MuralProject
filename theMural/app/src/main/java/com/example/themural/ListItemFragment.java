@@ -115,7 +115,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.filterItem:
-                Log.e(">>", "estas en filtro");
+                adapter.filter("Libro");
+                recyclerListItems.setAdapter(adapter);
                 break;
             case R.id.searchNav:
 

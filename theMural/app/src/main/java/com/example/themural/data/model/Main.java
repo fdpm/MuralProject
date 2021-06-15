@@ -30,16 +30,6 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         myPost = new ArrayList<Item>();
     }
 
-
-
-    public void newUser(String name, String nickname,String password, String phone, Image picture){
-
-        if(name!= null && password!= null && phone!=null && picture!=null) {
-            User newUser = new User(name, nickname,password, phone, picture);
-            users.add(newUser);
-        }
-    }
-
     public void newUser(User user){
         if(user != null){
             users.add(user);
@@ -83,15 +73,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         }
         return null;
     }
-
-    public void newPost(String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, int stateItem, Image imageItem,User user){
-
-        if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null && imageItem!=null && user!=null) {
-            Item newPost = new Item(nameItem, descriptionItem, locationItem, typeItem, priceItem, stateItem, imageItem, user);
-            posts.add(newPost);
-        }
-    }
-
+    
     public void editPost(String id, String nameItem, String descriptionItem, String locationItem, String typeItem, double priceItem, int stateItem, Image imageItem){
 
         if (nameItem!=null && descriptionItem!=null && locationItem!=null && typeItem!=null  && imageItem!=null) {
