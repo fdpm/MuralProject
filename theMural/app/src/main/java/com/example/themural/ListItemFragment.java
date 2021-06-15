@@ -158,6 +158,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                         }
                     }
                 });
+        adapter.filter(adapter.getCategory());
         recyclerListItems.setAdapter(adapter);
 
     }

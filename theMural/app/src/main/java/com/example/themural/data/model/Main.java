@@ -1,6 +1,7 @@
 package com.example.themural.data.model;
 
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     private ArrayList<Item> posts;
 
     private ArrayList<Item> myPost;
+    private String category;
 
     private OnItemListener onItemListener;
 
@@ -113,7 +115,9 @@ public class Main extends RecyclerView.Adapter<ItemView> {
                     filteredPosts.add(posts.get(i));
             }
         }
-        posts = filteredPosts;
+        if (filteredPosts!=null) {
+            posts = filteredPosts;
+        }
     }
 
     public void reverse() {
@@ -126,6 +130,14 @@ public class Main extends RecyclerView.Adapter<ItemView> {
                 return post;
         }
         return null;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public ArrayList<User> getUsers() {

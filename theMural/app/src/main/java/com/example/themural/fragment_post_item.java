@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.themural.data.model.Main;
+import com.example.themural.ui.login.LoginActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -22,6 +24,7 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
     private Button buttonDevices;
     private Button buttonMonitoring;
     private Button buttonVehicles;
+    private Main main;
 
     public fragment_post_item() {
         // Required empty public constructor
@@ -42,7 +45,7 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         db = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
-
+        main = LoginActivity.getMain();
     }
 
     @Override
@@ -71,7 +74,59 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonBooks:
+                main.setCategory("Libro");
+                Fragment support = new ListItemFragment();
+                FragmentTransaction transactionSupport = getFragmentManager().beginTransaction();
+                transactionSupport.replace(R.id.fragmentContainer, support);
+                transactionSupport.addToBackStack(null);
+                // Commit a la transacción
+                transactionSupport.commit();
+                break;
+            case R.id.buttonTools:
+                main.setCategory("Herramientas");
+                Fragment support2 = new ListItemFragment();
+                FragmentTransaction transactionSupport2 = getFragmentManager().beginTransaction();
+                transactionSupport2.replace(R.id.fragmentContainer, support2);
+                transactionSupport2.addToBackStack(null);
+                // Commit a la transacción
+                transactionSupport2.commit();
+                break;
 
+            case R.id.buttonLivingPlace:
+                main.setCategory("Viviendas");
+                Fragment support3 = new ListItemFragment();
+                FragmentTransaction transactionSupport3 = getFragmentManager().beginTransaction();
+                transactionSupport3.replace(R.id.fragmentContainer, support3);
+                transactionSupport3.addToBackStack(null);
+                // Commit a la transacción
+                transactionSupport3.commit();
+                break;
+            case R.id.buttonDevices:
+                main.setCategory("Dispositivos");
+                Fragment support4 = new ListItemFragment();
+                FragmentTransaction transactionSupport4 = getFragmentManager().beginTransaction();
+                transactionSupport4.replace(R.id.fragmentContainer, support4);
+                transactionSupport4.addToBackStack(null);
+                // Commit a la transacción
+                transactionSupport4.commit();
+                break;
+            case R.id.buttonMonitoring:
+                main.setCategory("Monitorias");
+                Fragment support5 = new ListItemFragment();
+                FragmentTransaction transactionSupport5 = getFragmentManager().beginTransaction();
+                transactionSupport5.replace(R.id.fragmentContainer, support5);
+                transactionSupport5.addToBackStack(null);
+                // Commit a la transacción
+                transactionSupport5.commit();
+                break;
+            case R.id.buttonVehicles:
+                main.setCategory("Vehiculos");
+                Fragment support6 = new ListItemFragment();
+                FragmentTransaction transactionSupport6 = getFragmentManager().beginTransaction();
+                transactionSupport6.replace(R.id.fragmentContainer, support6);
+                transactionSupport6.addToBackStack(null);
+                // Commit a la transacción
+                transactionSupport6.commit();
                 break;
 
         }

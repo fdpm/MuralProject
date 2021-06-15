@@ -54,7 +54,6 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
-        textView3 = root.findViewById(R.id.textView3);
         buttonEditProfile = root.findViewById(R.id.buttonEditProfile);
         buttonViewPostsProfile = root.findViewById(R.id.buttonViewPostsProfile);
         buttonSupportProfile = root.findViewById(R.id.buttonSupportProfile);

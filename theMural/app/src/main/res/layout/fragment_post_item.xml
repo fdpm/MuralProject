@@ -20,7 +20,7 @@
             android:layout_marginStart="176dp"
             android:layout_marginTop="120dp"
             android:layout_marginEnd="178dp"
-            android:text="¿Que quieres vender?"
+            android:text="Filtra la categoria que buscas"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
