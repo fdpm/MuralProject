@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public static Main getMain(){
-        return  main;
+        return main;
     }
 
     public void setMain(Main main){

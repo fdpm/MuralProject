@@ -168,6 +168,7 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         item.setIdItem(main.getUsers().get(0).getUserId()+"."+valor);
         item.setLocationItem(locationItem.getText().toString());
         item.setPriceItem(Integer.parseInt(priceItem.getText().toString()));
+
         if(checkBoxUsed.isChecked()){
             item.setStateItem(0);
         }else if(checkBoxNew.isChecked()){

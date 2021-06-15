@@ -18,6 +18,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
     private TextView  theLocationItem;
     private TextView thePriceItem;
     private TextView theItemType;
+    private TextView buttonSeller;
 
     private Main.OnItemListener onItemListener;
 
@@ -31,6 +32,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
         theLocationItem = root.findViewById(R.id.theLocationItem);
         thePriceItem = root.findViewById(R.id.thePriceItem);
         theItemType = root.findViewById(R.id.theItemType);
+        buttonSeller = root.findViewById(R.id.buttonSeller);
     }
 
     public ConstraintLayout getRoot() {
@@ -55,6 +57,14 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
 
     public TextView getTheItemType() {
         return theItemType;
+    }
+
+    public TextView getButtonSeller() {
+        return buttonSeller;
+    }
+
+    public void setButtonSeller(TextView buttonSeller) {
+        this.buttonSeller = buttonSeller;
     }
 
     @Override
