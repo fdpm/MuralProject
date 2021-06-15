@@ -106,6 +106,15 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         return null;
     }
 
+    public void filter(String category){
+        ArrayList<Item> filteredPosts = new ArrayList<Item>();
+        for (int i=0;i<posts.size();i++){
+            if(posts.get(i).getTypeItem().equals(category)){
+                    filteredPosts.add(posts.get(i));
+            }
+        }
+        posts = filteredPosts;
+    }
 
     public ArrayList<User> getUsers() {
         return users;
