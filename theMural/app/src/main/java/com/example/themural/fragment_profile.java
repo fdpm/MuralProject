@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.themural.data.model.Main;
 import com.example.themural.ui.login.LoginActivity;
@@ -54,6 +55,7 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
+
         buttonEditProfile = root.findViewById(R.id.buttonEditProfile);
         buttonViewPostsProfile = root.findViewById(R.id.buttonViewPostsProfile);
         buttonSupportProfile = root.findViewById(R.id.buttonSupportProfile);
@@ -102,6 +104,7 @@ public class fragment_profile extends Fragment implements View.OnClickListener {
                 transactionSupport.commit();
                 break;
             case R.id.buttonLogOut:
+                Toast.makeText(getContext(),"¡Esperamos verte pronto "+main.getUsers().get(0).getNickName()+"!",Toast.LENGTH_SHORT).show();
                 main.getUsers().clear();
                 main.getPosts().clear();
                 main.getMyPost().clear();

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.themural.data.model.User;
 import com.example.themural.ui.login.LoginActivity;
@@ -24,6 +25,7 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
     private EditText nameSignUp;
     private EditText nickname;
     private EditText pwdSignUp;
+    private EditText pwdConfirmar;
     private EditText editTextTextPassword2;
     private EditText phoneSignUp;
     private ImageView imageView2;
@@ -43,11 +45,12 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
         nameSignUp = findViewById(R.id.nameSignUp);
         nickname = findViewById(R.id.nicknameET);
         pwdSignUp = findViewById(R.id.pwdSignUp);
-        editTextTextPassword2 = findViewById(R.id.editTextTextPassword2);
+        editTextTextPassword2 = findViewById(R.id.pwdConfirmar);
         phoneSignUp = findViewById(R.id.phoneSignUp);
         imageView2 = findViewById(R.id.imageView2);
         buttonAddImageSignUp = findViewById(R.id.buttonAddImageSignUp);
         buttonConfirmSignUp = findViewById(R.id.buttonConfirmSignUp);
+        pwdConfirmar = findViewById(R.id.pwdConfirmar);
 
         buttonAddImageSignUp.setOnClickListener(this);
         buttonConfirmSignUp.setOnClickListener(this);
@@ -67,15 +70,23 @@ public class sign_up_activity extends AppCompatActivity implements View.OnClickL
                 String nicknam = nickname.getText().toString();
                 String contraeña = pwdSignUp.getText().toString();
                 String telefono = phoneSignUp.getText().toString();
+                String pwdConf = pwdConfirmar.getText().toString();
                 Image imagen = null;
 
+                if(pwdConf.equals(contraeña)) {
 
-                User user = new User(nombre,nicknam,contraeña,telefono,imagen);
-                user.setDisplayName(nombre);
-                db.collection("usuarios").document(user.getUserId()).set(user);
-
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
+                    User user = new User(nombre, nicknam, contraeña, telefono, imagen);
+                    user.setDisplayName(nombre);
+                    db.collection("usuarios").document(user.getUserId()).set(user);
+                    nameSignUp.setText("");
+                    nickname.setText("");
+                    pwdSignUp.setText("");
+                    phoneSignUp.setText("");
+                    Intent login = new Intent(this, LoginActivity.class);
+                    startActivity(login);
+                }else{
+                    Toast.makeText(this,"Contraseña diferentes",Toast.LENGTH_SHORT).show();
+                }
         }
     }
 

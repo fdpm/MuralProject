@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -135,8 +136,11 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
         switch (v.getId()) {
             case R.id.buttonContinueDetail:
                 tomarDatos();
+                Toast.makeText(getContext(),"Se agregó correctamente",Toast.LENGTH_SHORT).show();
                 db.collection("publicaciones").document(item.getIdItem()).set(item);
                 
+                Intent home = new Intent(v.getContext(), HomeActivity.class);
+                startActivity(home);
                 break;
 
             case R.id.buttonPostImageItem:
@@ -177,6 +181,10 @@ public class fragment_post_details extends Fragment implements View.OnClickListe
             item.setStateItem(2);
         }
         main.newPost(item);
+        descriptionItem.setText("");
+        titleItem.setText("");
+        locationItem.setText("");
+        priceItem.setText("");
     }
 
 
