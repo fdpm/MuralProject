@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Use the {@link ListItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListItemFragment extends Fragment implements View.OnClickListener, Main.OnItemListener, fragment_post_item.OnfilterCategory {
+public class ListItemFragment extends Fragment implements View.OnClickListener, Main.OnItemListener {
 
     //state
     private FirebaseFirestore db;
@@ -116,8 +116,6 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                     transactionSupport.addToBackStack(null);
                     // Commit a la transacción
                     transactionSupport.commit();
-                    adapter.filter("Libro");
-                    recyclerListItems.setAdapter(adapter);
                     break;
                 case R.id.sortItem:
                     adapter.reverse();
@@ -135,7 +133,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.searchNav:
-                adapter.filter("Libro");
+                adapter.filter(adapter.getCategory());
                 recyclerListItems.setAdapter(adapter);
                 break;
             case R.id.buttonSeller:
@@ -163,7 +161,6 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                 });
 //        adapter.filter("Libro");
         recyclerListItems.setAdapter(adapter);
-
     }
 
     @Override
@@ -175,8 +172,5 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         transaction.commit();
     }
 
-    @Override
-    public void filterCategory(String category) {
-        this.category = category;
-    }
+
 }
