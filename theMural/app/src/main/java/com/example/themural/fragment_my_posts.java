@@ -89,13 +89,13 @@ public class fragment_my_posts extends Fragment implements View.OnClickListener{
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 item[0] = document.toObject(Item.class);
                                 if (item[0].getIdItem().contains(main.getUsers().get(0).getUserId())) {
-                                    Log.e("descripcion: ", "Name: " + item[0].getNameItem() + " Descripcion: " + item[0].getDescriptionItem() +
-                                            "precio" + item[0].getPriceItem());
+                                    main.newMyPost(item[0]);
                                 }
                             }
                         }
                     }
                 });
+        recyclerViewMyPost.setAdapter(main);
     }
 
 

@@ -18,10 +18,12 @@ public class Main extends RecyclerView.Adapter<ItemView> {
 
     private ArrayList<User> users;
     private ArrayList<Item> posts;
+    private ArrayList<Item> myPost;
 
     public Main() {
         users = new ArrayList<User>();
         posts = new ArrayList<Item>();
+        myPost = new ArrayList<Item>();
     }
 
 
@@ -43,6 +45,13 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     public void newPost(Item post){
         if (post != null) {
             posts.add(post);
+            this.notifyDataSetChanged();
+        }
+    }
+
+    public void newMyPost(Item post){
+        if(post!=null){
+            myPost.add(post);
             this.notifyDataSetChanged();
         }
     }
