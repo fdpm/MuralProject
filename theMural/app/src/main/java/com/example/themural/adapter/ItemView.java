@@ -1,13 +1,18 @@
 package com.example.themural.adapter;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.themural.HomeActivity;
 import com.example.themural.R;
 import com.example.themural.data.model.Main;
+import com.example.themural.fragment_chat_sell;
 
 public class ItemView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -33,6 +38,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
         thePriceItem = root.findViewById(R.id.thePriceItem);
         theItemType = root.findViewById(R.id.theItemType);
         buttonSeller = root.findViewById(R.id.buttonSeller);
+        buttonSeller.setOnClickListener(this);
     }
 
     public ConstraintLayout getRoot() {
@@ -69,6 +75,11 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        onItemListener.onItemClick(getAdapterPosition());
+//        onItemListener.onItemClick(getAdapterPosition());
+        switch (v.getId()) {
+            case R.id.buttonSeller:
+                Toast.makeText(root.getContext(), "producto: "+theItemTitle.getText(), Toast.LENGTH_SHORT).show();
+            break;
+        }
     }
 }

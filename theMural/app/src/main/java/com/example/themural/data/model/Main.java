@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.themural.R;
 import com.example.themural.adapter.ItemView;
+import com.example.themural.fragment_chat_sell;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +25,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
 
     private ArrayList<Item> myPost;
     private String category;
+    private boolean click;
 
     private OnItemListener onItemListener;
 
@@ -31,6 +34,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         users = new ArrayList<User>();
         posts = new ArrayList<Item>();
         myPost = new ArrayList<Item>();
+        click = false;
     }
 
     public void newUser(User user){
@@ -96,6 +100,14 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         posts.remove(deletedPost);
     }
 
+    public boolean isClick() {
+        return click;
+    }
+
+    public void setClick(boolean click) {
+        this.click = click;
+    }
+
     public void refreshPosts(){
         posts.clear();
     }
@@ -153,6 +165,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
     }
 
 
+
     @NonNull
     @Override
     //Metodo que se ejecuta por cada item en el arreglo
@@ -169,7 +182,8 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         holder.getTitleItem().setText(posts.get(position).getNameItem());
         holder.getDescriptionItem().setText(posts.get(position).getDescriptionItem());
         holder.getLocationItem().setText(posts.get(position).getLocationItem());
-        holder.getPriceItem().setText(""+posts.get(position).getPriceItem());
+        int precio = (int)posts.get(position).getPriceItem();
+        holder.getPriceItem().setText(""+precio);
         holder.getTheItemType().setText(posts.get(position).getTypeItem());
     }
 
