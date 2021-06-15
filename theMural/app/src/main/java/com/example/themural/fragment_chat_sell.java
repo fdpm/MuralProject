@@ -62,13 +62,13 @@ public class fragment_chat_sell extends Fragment implements View.OnClickListener
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         chatSellList.setLayoutManager(layoutManager);
 
-        //ArrayList<Chat> chat = new ArrayList<>();
-        //Chat c = new Chat("Juan");
-        //User u = main.getUsers().get(0);
-        //chat.add(c);
-        //u.setChat(chat);
+        ArrayList<Chat> chat = new ArrayList<>();
+        Chat c = new Chat("Juan");
+        User u = main.getUsers().get(0);
+        chat.add(c);
+        u.setChat(chat);
         //db.collection("usuarios").document(u.getUserId()).set(u);
-        adapter = new ChatAdapter(this, main.getUsers().get(0).getChat());
+        adapter = new ChatAdapter(this, u.getChat());
         chatSellList.setAdapter(adapter);
 
         return root;
