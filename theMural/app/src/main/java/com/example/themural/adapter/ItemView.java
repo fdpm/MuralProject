@@ -19,7 +19,7 @@ public class ItemView extends RecyclerView.ViewHolder implements View.OnClickLis
     private Main.OnItemListener onItemListener;
 
 
-    public ItemView(ConstraintLayout root) {
+    public ItemView(ConstraintLayout root, Main.OnItemListener onItemListener) {
         super(root);
         this.root = root;
         //Ids del xml itemrow
