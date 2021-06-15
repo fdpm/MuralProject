@@ -30,6 +30,8 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
     private MessageAdapter messageAdapter;
     private Main main;
 
+    private String userChatName;
+
     public fragment_chat_window() {
 
     }
@@ -72,9 +74,9 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
         returnToChatListButton = root.findViewById(R.id.returnToChatListButton);
         returnToChatListButton.setOnClickListener(this);
         Bundle bundle = this.getArguments();
-        String nombre = (String) bundle.getString("nombre");
+        userChatName = (String) bundle.getString("nombre");
         personTitleText = root.findViewById(R.id.personTitleText);
-        personTitleText.setText(nombre);
+        personTitleText.setText(userChatName);
 
         return root;
     }
@@ -87,7 +89,7 @@ public class fragment_chat_window extends Fragment implements  View.OnClickListe
                     String textMessage = messageText.getText().toString();
                     Message nMessage = new Message(textMessage,main.getUsers().get(0).getName());
                     //dummy
-                    Message tMessage = new Message("Hola","Pedro");
+                    Message tMessage = new Message("Hola",userChatName);
                     messageText.setText("");
                     messageAdapter.addMessage(nMessage);
                     main.getUsers().get(0).getChat().get(0).addMessage(nMessage);
