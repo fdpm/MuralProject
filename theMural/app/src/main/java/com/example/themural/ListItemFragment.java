@@ -111,6 +111,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.filterItem:
                 Log.e(">>", "estas en filtro");
+                Log.e(">>", "estas en filtro");
                 break;
             case R.id.searchNav:
                 Log.e(">>", "estas en buscar");
