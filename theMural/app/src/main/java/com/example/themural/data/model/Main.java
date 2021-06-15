@@ -125,6 +125,14 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         posts = filteredPosts;
     }
 
+    public Item searchPost(String name) {
+        for(Item post : posts) {
+            if(post.getIdItem().equals(name))
+                return post;
+        }
+        return null;
+    }
+
     public ArrayList<User> getUsers() {
         return users;
     }

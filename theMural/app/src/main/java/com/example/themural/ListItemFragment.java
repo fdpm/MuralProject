@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.example.themural.adapter.ChatAdapter;
 import com.example.themural.data.model.Item;
 
 import com.example.themural.data.model.Main;
@@ -103,7 +102,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
 
 
 
-        mostrarPost();
+        showPost();
         return root;
     }
 
@@ -120,7 +119,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    public void mostrarPost() {
+    public void showPost() {
         db.collection("publicaciones").get().addOnCompleteListener(
                 task -> {
                     if (task.isSuccessful()) {
