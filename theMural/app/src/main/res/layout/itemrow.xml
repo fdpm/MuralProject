@@ -22,15 +22,15 @@
 
     <TextView
         android:id="@+id/theLocationItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="20dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="251dp"
         android:text="TextView"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theDescItem" />
 
@@ -44,19 +44,19 @@
         android:textColor="#B391E4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theLocationItem"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <TextView
         android:id="@+id/theDescItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="251dp"
-        android:text="TextView"
+        android:layout_marginEnd="150dp"
+        android:inputType="textMultiLine"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
@@ -67,9 +67,9 @@
         android:id="@+id/theItemType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="119dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="90dp"
         android:text="TextView"
         android:textColor="#B391E4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,8 +81,8 @@
         android:id="@+id/buttonSeller"
         android:layout_width="247dp"
         android:layout_height="37dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginBottom="13dp"
         android:text="Contactar vendedor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,5 +99,15 @@
         android:text="$"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theLocationItem" />
+
+    <TextView
+        android:id="@+id/telET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="65dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
