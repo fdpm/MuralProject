@@ -99,13 +99,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerListItems.setLayoutManager(layoutManager);
-//        filterOrderNav.setOnClickListener(this);
         searchNav.setOnClickListener(this);
-
-
-
-
-
 
         showPost();
         filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem)->{
@@ -121,13 +115,12 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                     transactionSupport.commit();
                     break;
                 case R.id.sortItem:
-
+                    adapter.reverse();
+                    recyclerListItems.setAdapter(adapter);
                     break;
             }
             return true;
         });
-
-        //mostrarPost();
 
         return root;
     }
@@ -135,14 +128,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.filterItem:
-                adapter.filter("Libro");
-                recyclerListItems.setAdapter(adapter);
-                break;
             case R.id.searchNav:
 
-                adapter.filter("Vehiculos");
-                recyclerListItems.setAdapter(adapter);
                 break;
         }
     }
@@ -166,13 +153,6 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                     }
                 });
         recyclerListItems.setAdapter(adapter);
-        /*
-        public void mostrarPosts() {
-            db.collection("publicaciones").document();
-
-        }
-   
-         */
 
     }
 

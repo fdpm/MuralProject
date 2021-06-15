@@ -13,6 +13,7 @@ import com.example.themural.R;
 import com.example.themural.adapter.ItemView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main extends RecyclerView.Adapter<ItemView> {
 
@@ -113,6 +114,10 @@ public class Main extends RecyclerView.Adapter<ItemView> {
             }
         }
         posts = filteredPosts;
+    }
+
+    public void reverse() {
+        Collections.reverse(posts);
     }
 
     public Item searchPost(String name) {
