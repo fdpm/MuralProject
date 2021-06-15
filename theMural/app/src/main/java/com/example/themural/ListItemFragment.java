@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Use the {@link ListItemFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListItemFragment extends Fragment implements View.OnClickListener, Main.OnItemListener, fragment_post_item.OnfilterCategory {
+public class ListItemFragment extends Fragment implements View.OnClickListener, Main.OnItemListener {
 
     //state
     private FirebaseFirestore db;
@@ -106,8 +106,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         //buttonSeller.setOnClickListener(this);
 
         showPost();
-        filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem)->{
-            switch (upMenuItem.getItemId()){
+        filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem) -> {
+            switch (upMenuItem.getItemId()) {
                 case R.id.filterItem:
                     // Crea el nuevo fragmento y la transacción.
                     Fragment support = new fragment_post_item();
@@ -126,13 +126,15 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         });
 
         return root;
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.searchNav:
-
+                adapter.filter(adapter.getCategory());
+                recyclerListItems.setAdapter(adapter);
                 break;
             case R.id.buttonSeller:
                 Log.e("hello moto", "sizasiza");
@@ -157,9 +159,8 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
                         }
                     }
                 });
-        adapter.filter(category);
+//        adapter.filter("Libro");
         recyclerListItems.setAdapter(adapter);
-
     }
 
     @Override
@@ -171,8 +172,5 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
         transaction.commit();
     }
 
-    @Override
-    public void filterCategory(String category) {
-        this.category = category;
-    }
+
 }

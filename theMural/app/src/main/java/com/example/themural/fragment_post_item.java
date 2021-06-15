@@ -25,7 +25,6 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
     private Button buttonMonitoring;
     private Button buttonVehicles;
     private Main main;
-    private OnfilterCategory observer;
 
     public fragment_post_item() {
         // Required empty public constructor
@@ -136,11 +135,4 @@ public class fragment_post_item extends Fragment implements View.OnClickListener
 
     }
 
-    public void setObserver(OnfilterCategory observer){
-        this.observer = observer;
-    }
-
-    public interface OnfilterCategory {
-        void filterCategory(String category);
-    }
 }

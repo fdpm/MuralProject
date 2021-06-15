@@ -26,7 +26,6 @@ public class HomeActivity extends AppCompatActivity {
     private fragment_chat_sell chatSell;
     private fragment_chat_purchase chatPurchase;
     private fragment_profile profile;
-    private fragment_post_item post_item;
 
 
     private BottomNavigationView navigator;
@@ -47,10 +46,9 @@ public class HomeActivity extends AppCompatActivity {
         chatSell = fragment_chat_sell.newInstance();
         chatPurchase = fragment_chat_purchase.newInstance();
         profile = fragment_profile.newInstance();
-        post_item = fragment_post_item.newInstance();
+
 
         showFragment(listItemFragment);
-//        post_item.setObserver(listItemFragment);
         navigator.setOnNavigationItemSelectedListener(
                 (menuItem)->{
                     switch (menuItem.getItemId()){
