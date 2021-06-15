@@ -34,17 +34,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatView> {
         //main.getUsers().get(0).getChat()
 
         //dummy
-<<<<<<< HEAD
-        //Chat ca = new Chat("pedro");
-        //ca.addMessage(new Message("hola", "pedro"));
-        //chat.add(ca);
 
-        Chat ca = new Chat("pedro");
-        ca.addMessage(new Message("hola", "pedro"));
-        chat.add(ca);
-
-=======
->>>>>>> 08465171a45663e8eee0551cc27e78f81a117c72
 
     }
 

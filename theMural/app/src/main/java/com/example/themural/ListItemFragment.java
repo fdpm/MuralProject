@@ -78,24 +78,7 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
 
          */
 
-        filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem)->{
-            switch (upMenuItem.getItemId()){
-                case R.id.filterItem:
-                    // Crea el nuevo fragmento y la transacción.
-                    Fragment support = new fragment_post_item();
-                    FragmentTransaction transactionSupport = getFragmentManager().beginTransaction();
-                    transactionSupport.replace(R.id.fragmentContainer, support);
-                    transactionSupport.addToBackStack(null);
 
-                    // Commit a la transacción
-                    transactionSupport.commit();
-                    break;
-                case R.id.sortItem:
-
-                    break;
-            }
-            return true;
-        });
 
     }
 
@@ -116,14 +99,33 @@ public class ListItemFragment extends Fragment implements View.OnClickListener, 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerListItems.setLayoutManager(layoutManager);
-        filterOrderNav.setOnClickListener(this);
+//        filterOrderNav.setOnClickListener(this);
         searchNav.setOnClickListener(this);
 
 
 
 
 
+
         showPost();
+        filterOrderNav.setOnNavigationItemSelectedListener((upMenuItem)->{
+            switch (upMenuItem.getItemId()){
+                case R.id.filterItem:
+                    // Crea el nuevo fragmento y la transacción.
+                    Fragment support = new fragment_post_item();
+                    FragmentTransaction transactionSupport = getFragmentManager().beginTransaction();
+                    transactionSupport.replace(R.id.fragmentContainer, support);
+                    transactionSupport.addToBackStack(null);
+
+                    // Commit a la transacción
+                    transactionSupport.commit();
+                    break;
+                case R.id.sortItem:
+
+                    break;
+            }
+            return true;
+        });
 
         //mostrarPost();
 
