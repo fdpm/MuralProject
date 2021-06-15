@@ -18,7 +18,11 @@ public class Main extends RecyclerView.Adapter<ItemView> {
 
     private ArrayList<User> users;
     private ArrayList<Item> posts;
+
     private ArrayList<Item> myPost;
+
+    private OnItemListener onItemListener;
+
 
     public Main() {
         users = new ArrayList<User>();
@@ -107,6 +111,10 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         posts.remove(deletedPost);
     }
 
+    public void refreshPosts(){
+        posts.clear();
+    }
+
     public Item findPost(String id) {
         for(Item post : posts) {
             if(post.getIdItem().equals(id))
@@ -153,7 +161,7 @@ public class Main extends RecyclerView.Adapter<ItemView> {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.itemrow,parent,false);
         ConstraintLayout rowroot = (ConstraintLayout) row;
-        ItemView itemView = new ItemView(rowroot);
+        ItemView itemView = new ItemView(rowroot, onItemListener);
         return itemView;
     }
 

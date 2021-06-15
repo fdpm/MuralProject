@@ -11,7 +11,7 @@
         android:id="@+id/constL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#6919F6">
+        android:background="#393939">
 
         <TextView
             android:id="@+id/messageViewText2"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="8dp"
-            android:background="#FFC107"
+            android:background="#555555"
             android:hint="hola, como vas?"
             android:textAlignment="textStart"
             android:textColor="#000000"
@@ -33,7 +33,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="#FFC107"
+            android:background="#555555"
             android:hint="Tu Madre"
             android:textAlignment="textStart"
             android:textColor="#000000"
@@ -50,7 +50,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
-            android:background="#87F48C"
+            android:background="#C75CDF"
             android:hint="Mi Madre"
             android:textAlignment="textEnd"
             android:textColor="#000000"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
-            android:background="#87F48C"
+            android:background="#FFC75CDF"
             android:hint="hola, como vas?"
             android:textAlignment="textEnd"
             android:textColor="#000000"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="#E98EFF"
+            android:background="#922CF6"
             android:hint="hora/fecha"
             android:textAlignment="center"
             android:textColor="#000000"

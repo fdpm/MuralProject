@@ -54,16 +54,18 @@
 
         <Button
             android:id="@+id/buttonPostItem"
-            android:layout_width="298dp"
-            android:layout_height="57dp"
+            android:layout_width="326dp"
+            android:layout_height="58dp"
             android:layout_marginStart="152dp"
-            android:layout_marginTop="127dp"
+            android:layout_marginTop="68dp"
             android:layout_marginEnd="152dp"
+            android:layout_marginBottom="164dp"
             android:backgroundTint="#7758D1"
             android:text="Publicar"
             android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonPostImageItem" />
     </androidx.constraintlayout.widget.ConstraintLayout>
