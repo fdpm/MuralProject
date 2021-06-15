@@ -9,10 +9,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerListItems"
-        android:layout_width="301dp"
-        android:layout_height="539dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
+        android:layout_width="388dp"
+        android:layout_height="585dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,16 +23,17 @@
         android:id="@+id/filterOrderNav"
         android:layout_width="413dp"
         android:layout_height="55dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerListItems"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/up_menu" />
+        app:menu="@menu/up_menu"
+        tools:layout_editor_absoluteY="54dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/searchNav"
-        android:layout_width="408dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="412dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
